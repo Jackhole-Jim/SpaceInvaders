@@ -6,7 +6,27 @@ using System.Threading.Tasks;
 
 namespace SpaceInvaders.MainShip
 {
-    class MainShip
+    public class MainShip : Movable
     {
+        private Position position = new Position()
+        {
+            X = 0,
+            Y = 0
+        };
+
+        public Position getPosition()
+        {
+            return position;
+        }
+
+        public void moveX(int amount)
+        {
+            position.X += amount;
+        }
+
+        public void moveY(int amount)
+        {
+            
+        }
     }
 }

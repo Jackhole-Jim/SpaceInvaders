@@ -6,7 +6,27 @@ using System.Threading.Tasks;
 
 namespace SpaceInvaders.Enemies
 {
-    class Class1
+    public class TopEnemy : Movable
     {
+        private Position position = new Position()
+        {
+            X = 0,
+            Y = 0
+        };
+
+        public Position getPosition()
+        {
+            return position;
+        }
+
+        public void moveX(int amount)
+        {
+            position.X += amount;
+        }
+
+        public void moveY(int amount)
+        {
+            position.Y += amount;
+        }
     }
 }

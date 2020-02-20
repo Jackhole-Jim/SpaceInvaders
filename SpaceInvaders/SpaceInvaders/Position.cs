@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace SpaceInvaders
 {
-    interface Movable
+    public class Position
     {
-        Position getPosition();
+        public int X { get; set; }
+        public int Y { get; set; }
 
-        void moveX(int amount);
 
-        void moveY(int amount);
     }
 }
