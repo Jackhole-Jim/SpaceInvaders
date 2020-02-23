@@ -1,32 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SpaceInvaders.Enemies
 {
-    public class TopEnemy : Movable
-    {
-        private Position position = new Position()
-        {
-            X = 0,
-            Y = 0
-        };
+   public class TopEnemy : MovableObject
+   {
+      protected TopEnemy(int x, int y, bool dead, Bitmap image, Panel drawingPanel) : base(x, y, dead, image, drawingPanel)
+      {
+      }
 
-        public Position getPosition()
-        {
-            return position;
-        }
-
-        public void moveX(int amount)
-        {
-            position.X += amount;
-        }
-
-        public void moveY(int amount)
-        {
-            position.Y += amount;
-        }
-    }
+      public override void Move()
+      {
+         
+      }
+   }
 }
