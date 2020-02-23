@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace SpaceInvaders.Enemies
+{
+   public class EnemyShip : MovableObject
+   {
+      private static bool movingRight = true;
+      private int XMoveAmount = 5;
+      private int YMoveAmount = 5;
+      public event EventHandler WallHit;
+      protected EnemyShip(int x, int y, bool dead, Panel drawingPanel, Bitmap image) : base(x, y, dead, drawingPanel)
+      {
+         this.Image = image;
+      }
+
+      public override void Move()
+      {
+         x = movingRight ? x + XMoveAmount : x - XMoveAmount;
+         if(!IsInPanel())
+         {
+            x = movingRight ? x - XMoveAmount : x + XMoveAmount;
+            WallHit.Invoke("Wall hit", new EventArgs());
+         }
+
+      }
+
+      public bool IsInPlayingField()
+      {
+         return y > 5000; //TODO: Change to match lower threshhold 
+      }
+      public void MoveDown()
+      {
+         y += YMoveAmount;
+         if(!IsInPlayingField())
+         {
+            //Kill();
+         }
+      }
+   }
+}
