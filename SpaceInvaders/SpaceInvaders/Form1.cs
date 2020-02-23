@@ -17,6 +17,11 @@ namespace SpaceInvaders
             InitializeComponent();
         }
 
+        private void tick_Tick(object sender, EventArgs e)
+        {
+
+        }
+        
         private void onPaint(object sender, PaintEventArgs e)
         {
 

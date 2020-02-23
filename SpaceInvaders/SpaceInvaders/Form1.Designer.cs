@@ -28,9 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.tick = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // tick
+            // 
+            this.tick.Tick += new System.EventHandler(this.tick_Tick);
             // 
             // pictureBox1
             // 
@@ -59,6 +65,8 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
+
+        private System.Windows.Forms.Timer tick;
     }
 }
 
