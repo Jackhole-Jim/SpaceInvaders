@@ -16,5 +16,10 @@ namespace SpaceInvaders
         {
             InitializeComponent();
         }
+
+        private void onPaint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
