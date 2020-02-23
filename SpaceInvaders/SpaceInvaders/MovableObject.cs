@@ -23,7 +23,7 @@ namespace SpaceInvaders
          this.drawingPanel = drawingPanel;
       }
 
-      public abstract void Move();
+      public abstract void Move(int deltaX, int deltaY);
       public void Show()
       {
          Graphics graphics = drawingPanel.CreateGraphics();
