@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpaceInvaders.Properties;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -6,16 +7,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SpaceInvaders.MainShip
+namespace SpaceInvaders.Player
 {
     public class MainShip : MovableObject
     {
-      protected MainShip(int x, int y, bool dead, Bitmap image, Panel drawingPanel) : base(x, y, dead, image, drawingPanel)
+
+      public MainShip(int x, int y, Panel drawingPanel) : base(x, y, false, drawingPanel)
       {
+            Image = new Bitmap(Resources.player);
+            Show();
       }
-      public override void Move()
-      {
-         throw new NotImplementedException();
+      public override void Move(int deltaX, int deltaY)
+        {
+            x += deltaX;         
       }
 
       public override bool Equals(object obj)
