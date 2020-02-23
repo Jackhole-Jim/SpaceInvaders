@@ -25,7 +25,16 @@ namespace SpaceInvaders
 
         public void handlebuttonPressed(Keys key)
         {
+            switch(key)
+            {
+                case Keys.Right:
+                    mainShip.Move(moveDist, 0);
+                    break;
 
+                case Keys.Left:
+                    mainShip.Move(-moveDist, 0);
+                    break;
+            }
         }
     }
 }

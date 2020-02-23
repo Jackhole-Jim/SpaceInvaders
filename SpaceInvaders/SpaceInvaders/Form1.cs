@@ -23,7 +23,7 @@ namespace SpaceInvaders
 
         private void tick_Tick(object sender, EventArgs e)
         {
-
+            drawingPanel.Invalidate();
         }
         
         private void onPaint(object sender, PaintEventArgs e)

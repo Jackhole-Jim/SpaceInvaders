@@ -37,6 +37,7 @@
             // 
             // tick
             // 
+            this.tick.Enabled = true;
             this.tick.Tick += new System.EventHandler(this.tick_Tick);
             // 
             // pictureBox1
@@ -49,7 +50,7 @@
             // 
             // drawingPanel
             // 
-            this.drawingPanel.Location = new System.Drawing.Point(2, 2);
+            this.drawingPanel.Location = new System.Drawing.Point(30, 65);
             this.drawingPanel.Name = "drawingPanel";
             this.drawingPanel.Size = new System.Drawing.Size(679, 624);
             this.drawingPanel.TabIndex = 1;
@@ -65,7 +66,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.onPaint);
+            this.drawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.onPaint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonPressed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
