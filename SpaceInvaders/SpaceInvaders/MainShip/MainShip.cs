@@ -1,36 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SpaceInvaders.MainShip
 {
-    public class MainShip : MovableObject
+    public class MainShip : Movable
     {
-      protected MainShip(int x, int y, bool dead, Bitmap image, Panel drawingPanel) : base(x, y, dead, image, drawingPanel)
-      {
-      }
-      public override void Move()
-      {
-         throw new NotImplementedException();
-      }
+        private Position position = new Position()
+        {
+            X = 0,
+            Y = 0
+        };
 
-      public override bool Equals(object obj)
-      {
-         return base.Equals(obj);
-      }
+        public Position getPosition()
+        {
+            return position;
+        }
 
-      public override int GetHashCode()
-      {
-         return base.GetHashCode();
-      }
+        public void moveX(int amount)
+        {
+            position.X += amount;
+        }
 
-      public override string ToString()
-      {
-         return base.ToString();
-      }
-   }
+        public void moveY(int amount)
+        {
+            
+        }
+    }
 }
