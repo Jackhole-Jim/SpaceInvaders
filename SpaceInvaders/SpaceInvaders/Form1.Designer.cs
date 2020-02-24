@@ -50,23 +50,25 @@
             // 
             // drawingPanel
             // 
-            this.drawingPanel.Location = new System.Drawing.Point(30, 65);
+            this.drawingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.drawingPanel.Location = new System.Drawing.Point(0, 0);
             this.drawingPanel.Name = "drawingPanel";
-            this.drawingPanel.Size = new System.Drawing.Size(679, 624);
+            this.drawingPanel.Size = new System.Drawing.Size(700, 800);
             this.drawingPanel.TabIndex = 1;
+            this.drawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.onPaint);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(684, 761);
+            this.ClientSize = new System.Drawing.Size(700, 800);
             this.Controls.Add(this.drawingPanel);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.drawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.onPaint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonPressed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

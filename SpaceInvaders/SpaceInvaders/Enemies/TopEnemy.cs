@@ -8,15 +8,33 @@ using System.Windows.Forms;
 
 namespace SpaceInvaders.Enemies
 {
-   //public class TopEnemy : MovableObject
-   //{
-   //   protected TopEnemy(int x, int y, bool dead, Bitmap image, Panel drawingPanel) : base(x, y, dead, image, drawingPanel)
-   //   {
-   //   }
+    public class TopEnemy : MovableObject
+    {
+        private const int ALIEN_Y_DROP = 50;
+        private bool movingRight = true;
 
-   //   public override void Move()
-   //   {
-         
-   //   }
-   //}
+        public TopEnemy(int x, int y, bool dead, Bitmap image, Panel drawingPanel) : base(x, y, false, image, drawingPanel) { }
+        
+        public override void Move(int deltaX = 5, int deltaY = 5)
+        {
+            if (X >= drawingPanel.Size.Width - 100)
+            {
+                Y += ALIEN_Y_DROP;
+                movingRight = false;
+            }
+            else if (X <= 20)
+            {
+                Y += ALIEN_Y_DROP;
+                movingRight = true;
+            }
+            if (movingRight)
+            {
+                X += deltaX;
+            } 
+            else
+            {
+                X -= deltaX;
+            }
+        }
+    }
 }
