@@ -45,9 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enemies\EnemyShip.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="MovableObject.cs" />
-    <Compile Include="Enemies\TopEnemy.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
