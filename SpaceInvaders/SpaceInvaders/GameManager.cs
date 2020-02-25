@@ -29,6 +29,10 @@ namespace SpaceInvaders
         private List<TopEnemy> aliens = new List<TopEnemy>();
         private List<Bitmap> alienBmps = new List<Bitmap>();
 
+        Panel panel;
+        private int lives = 1;
+
+
         public GameManager()
         {
             int x = INITIAL_ALIEN_X;
@@ -114,10 +118,20 @@ namespace SpaceInvaders
             {
                 case Keys.Right:
                     mainShip.Move(moveDist, 0);
+
+                    if(!mainShip.IsInPanel())
+                    {
+                        mainShip.Move(-moveDist, 0);
+                    }
                     break;
 
                 case Keys.Left:
                     mainShip.Move(-moveDist, 0);
+
+                    if (!mainShip.IsInPanel())
+                    {
+                        mainShip.Move(moveDist, 0);
+                    }
                     break;
 
                 case Keys.Space:
