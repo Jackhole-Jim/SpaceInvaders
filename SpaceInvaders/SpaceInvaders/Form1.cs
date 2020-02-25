@@ -18,8 +18,8 @@ namespace SpaceInvaders
         {
             InitializeComponent();
 
-            manager = new GameManager(this.drawingPanel);
-            manager.ShowAll();
+            manager = new GameManager();
+            Invalidate();
         }
 
         private void tick_Tick(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace SpaceInvaders
         
         private void onPaint(object sender, PaintEventArgs e)
         {
-            manager.Move();
+            manager.Move(e);
         }
 
         private void buttonPressed(object sender, KeyEventArgs e)

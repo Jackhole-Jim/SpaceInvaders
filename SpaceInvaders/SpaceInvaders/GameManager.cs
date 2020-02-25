@@ -24,17 +24,17 @@ namespace SpaceInvaders
         private const int INITIAL_ALIEN_Y = 50;
 
         private MovableObject mainShip;
+        private Bullet bullet;
         private int alienToMove = 0;
         private List<TopEnemy> aliens = new List<TopEnemy>();
         private List<Bitmap> alienBmps = new List<Bitmap>();
-        Panel panel;
 
-        public GameManager(Panel drawingPanel)
+        public GameManager()
         {
             int x = INITIAL_ALIEN_X;
             int y = INITIAL_ALIEN_Y;
-            this.panel = drawingPanel;
-            mainShip = new MainShip(350, 750, new Bitmap(Resources.player), drawingPanel);
+            mainShip = new MainShip(350, 750, new Bitmap(Resources.player));
+            bullet = new Bullet(-100, -100, new Bitmap(Resources.PlayerShot));
             alienBmps.Add(new Bitmap(Resources.AlienA1));
             alienBmps.Add(new Bitmap(Resources.AlienB1));
             alienBmps.Add(new Bitmap(Resources.AlienB1));
@@ -45,7 +45,7 @@ namespace SpaceInvaders
             {
                 for(int j = 0; j < ENEMIES_PER_ROW; j++)
                 {
-                    aliens.Add(new TopEnemy(x, y, false, alienImg, drawingPanel));
+                    aliens.Add(new TopEnemy(x, y, false, alienImg));
                     x += ENEMIES_COL_SPACING;
                 }
                 y += ENEMIES_ROW_SPACING;
@@ -63,19 +63,23 @@ namespace SpaceInvaders
             aliens.Reverse();
         }
 
-        public void ShowAll()
+        public void ShowAll(PaintEventArgs e)
         {
-            mainShip.Show();
-            foreach(TopEnemy alien in aliens)
+            mainShip.Show(e);
+            bullet.Show(e);
+            foreach (TopEnemy alien in aliens)
             {
-                alien.Show();
+                alien.Show(e);
             }
+
         }
 
-        public void Move()
+        public void Move(PaintEventArgs e)
         {
-            mainShip.Show();
+            ShowAll(e);
+            bullet.Move(0, 0);
             MoveAliens();
+            
         }
 
         public void MoveAliens()
@@ -90,7 +94,7 @@ namespace SpaceInvaders
             TopEnemy aleinToMove = aliens[alienToMove];
             aleinToMove.Move(ALIEN_MOVE_DIST, 0);
 
-            if (aleinToMove.X >= panel.Size.Width - 100)
+            if (aleinToMove.X >= 700 - 100)
             {
                 //Move all aliens down one at a time just by y
                 //movingRight = false;
@@ -100,15 +104,8 @@ namespace SpaceInvaders
                 //Move all aliens down one at a time just by y
                 //movingRight = true;
             }
-
-            aleinToMove.Show();
             alienToMove++;
 
-            foreach (TopEnemy alien in aliens)
-            {
-                //alien.Move(ALIEN_MOVE_DIST, 0);
-                alien.Show();
-            }
         }
 
         public void handlebuttonPressed(Keys key)
@@ -121,6 +118,10 @@ namespace SpaceInvaders
 
                 case Keys.Left:
                     mainShip.Move(-moveDist, 0);
+                    break;
+
+                case Keys.Space:
+                    bullet.Fire(mainShip.X, mainShip.Y);
                     break;
             }
         }

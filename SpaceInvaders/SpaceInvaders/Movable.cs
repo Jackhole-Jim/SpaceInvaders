@@ -13,5 +13,6 @@ namespace SpaceInvaders
         void moveX(int amount);
 
         void moveY(int amount);
+
     }
 }

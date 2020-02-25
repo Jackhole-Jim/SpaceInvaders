@@ -40,6 +40,7 @@
             // tick
             // 
             this.tick.Enabled = true;
+            this.tick.Interval = 20;
             this.tick.Tick += new System.EventHandler(this.tick_Tick);
             // 
             // pictureBox1

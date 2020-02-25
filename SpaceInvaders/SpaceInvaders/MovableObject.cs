@@ -16,7 +16,7 @@ namespace SpaceInvaders
       public bool Dead { get; set; }
       public Bitmap Image { get; set; }
 
-      protected MovableObject(int x, int y, bool dead, Bitmap image, Panel drawingPanel)
+      protected MovableObject(int x, int y, bool dead, Bitmap image)
       {
          this.X = x;
          this.Y = y;
@@ -26,10 +26,11 @@ namespace SpaceInvaders
         }
 
       public abstract void Move(int deltaX, int deltaY);
-      public void Show()
+      public void Show(PaintEventArgs e)
       {
-         Graphics graphics = drawingPanel.CreateGraphics();
-         graphics.DrawImageUnscaled(Image, X, Y);
+         //Graphics graphics = drawingPanel.CreateGraphics();
+        // graphics.DrawImageUnscaled(Image, X, Y);
+        e.Graphics.DrawImage(Image, X, Y);
       }
 
       public bool IsInPanel()
