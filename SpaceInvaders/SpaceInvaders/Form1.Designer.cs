@@ -32,7 +32,9 @@
             this.tick = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.drawingPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.drawingPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tick
@@ -50,12 +52,24 @@
             // 
             // drawingPanel
             // 
+            this.drawingPanel.Controls.Add(this.label1);
             this.drawingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.drawingPanel.Location = new System.Drawing.Point(0, 0);
             this.drawingPanel.Name = "drawingPanel";
             this.drawingPanel.Size = new System.Drawing.Size(700, 800);
             this.drawingPanel.TabIndex = 1;
             this.drawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.onPaint);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Agency FB", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(54, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(596, 58);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "SCORE<1>        HI-SCORE        SCORE<2>";
             // 
             // Form1
             // 
@@ -71,6 +85,8 @@
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonPressed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.drawingPanel.ResumeLayout(false);
+            this.drawingPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -81,6 +97,7 @@
 
         private System.Windows.Forms.Timer tick;
         private System.Windows.Forms.Panel drawingPanel;
+        private System.Windows.Forms.Label label1;
     }
 }
 

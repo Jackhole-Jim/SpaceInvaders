@@ -49,6 +49,7 @@ namespace SpaceInvaders
                     x += ENEMIES_COL_SPACING;
                 }
                 y += ENEMIES_ROW_SPACING;
+                x = INITIAL_ALIEN_X;
                 alienImg = alienBmps[i++];
 
                 //aliens.Add(new TopEnemy(initialX, initialY, false, new Bitmap(Resources.AlienA1), drawingPanel));
@@ -59,6 +60,7 @@ namespace SpaceInvaders
                 //initialX = initialX + ENEMIES_COL_SPACING;
                 //initialY = INITIAL_ALIEN_Y;
             }
+            aliens.Reverse();
         }
 
         public void ShowAll()
@@ -73,12 +75,33 @@ namespace SpaceInvaders
         public void Move()
         {
             mainShip.Show();
+            MoveAliens();
+        }
+
+        public void MoveAliens()
+        {
+            int x = INITIAL_ALIEN_X;
+            int y = INITIAL_ALIEN_Y;
+
             if (alienToMove >= aliens.Count)
             {
                 alienToMove = 0;
             }
-            aliens[alienToMove].Move(ALIEN_MOVE_DIST, 0);
-            aliens[alienToMove].Show();
+            TopEnemy aleinToMove = aliens[alienToMove];
+            aleinToMove.Move(ALIEN_MOVE_DIST, 0);
+
+            if (aleinToMove.X >= panel.Size.Width - 100)
+            {
+                //Move all aliens down one at a time just by y
+                //movingRight = false;
+            }
+            else if (aleinToMove.X <= 20)
+            {
+                //Move all aliens down one at a time just by y
+                //movingRight = true;
+            }
+
+            aleinToMove.Show();
             alienToMove++;
 
             foreach (TopEnemy alien in aliens)
