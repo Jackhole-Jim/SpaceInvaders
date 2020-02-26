@@ -1,4 +1,4 @@
-﻿using SpaceInvaders.Properties;
+using SpaceInvaders.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,7 +12,7 @@ namespace SpaceInvaders.Player
     public class MainShip : MovableObject
     {
 
-      public MainShip(int x, int y, Bitmap image) : base(x, y, image)
+      public MainShip(int x, int y, Bitmap image, int panelWidth, int panelHeight) : base(x, y, image, panelWidth, panelHeight)
       {
             Image = image;
       }

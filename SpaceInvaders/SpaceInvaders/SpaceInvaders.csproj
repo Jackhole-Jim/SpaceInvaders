@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enemies\EnemyShip.cs" />
+    <Compile Include="Enemies\Alien.cs" />
     <Compile Include="Managers\EnemyManager.cs" />
     <Compile Include="Managers\GameManager.cs" />
     <Compile Include="MovableObject.cs" />

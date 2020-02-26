@@ -12,26 +12,26 @@ namespace SpaceInvaders.Managers
 {
     class EnemyManager
     {
-        private const int ALIEN_MOVE_DIST_X = 5;
-        private const int ALIEN_MOVE_DIST_Y = 5;
         private const int ENEMIES_PER_ROW = 11;
         private const int NUM_OF_ROWS = 5;
         private const int ENEMIES_ROW_SPACING = 50;
         private const int ENEMIES_COL_SPACING = 50;
         private const int INITIAL_ALIEN_X = 20;
         private const int INITIAL_ALIEN_Y = 300;
-        
+
+
         private int alienToMove = 0;
         private List<Alien> aliens = new List<Alien>();
         private List<Bitmap> alienBmps = new List<Bitmap>();
-        Panel panel;
-
-        public EnemyManager( ) { }
-
-        public EnemyManager(Panel panel)
+        private int panelWidth;
+        private int panelHeight;
+        private bool moveDown = false;
+        public EnemyManager(int panelWidth, int panelHeight)
         {
-            this.panel = panel;
+            this.panelWidth = panelWidth;
+            this.panelHeight = panelHeight;
         }
+
 
 
         public void GenerateEnemies()
@@ -50,12 +50,14 @@ namespace SpaceInvaders.Managers
             {
                 for (int j = 0; j < ENEMIES_PER_ROW; j++)
                 {
-                    aliens.Add(new Alien(x, y, alienImg));
+                    Alien newAlien = new Alien(x, y, alienImg, panelWidth, panelHeight);
+                    aliens.Add(newAlien);
+
                     x += ENEMIES_COL_SPACING;
                 }
                 y -= ENEMIES_ROW_SPACING;
                 x = INITIAL_ALIEN_X;
-                if((i + 1) < NUM_OF_ROWS)
+                if ((i + 1) < NUM_OF_ROWS)
                 {
                     alienImg = alienBmps[i + 1];
                 }
@@ -72,15 +74,40 @@ namespace SpaceInvaders.Managers
 
         public void MoveNextAlien()
         {
+            if (alienToMove == 0)
+            {
+                moveDown = CheckIfWallHit();
+            }
+
             if (alienToMove < aliens.Count)
             {
-                aliens[alienToMove++].Move();
+                if (moveDown)
+                    aliens[alienToMove++].MoveDown();
+                else
+                    aliens[alienToMove++].Move();
+                if (alienToMove == aliens.Count)
+                    alienToMove = 0;
             }
-            else
+        }
+
+        public bool CheckIfWallHit()
+        {
+            bool wallHit = false;
+
+            foreach (Alien alien in aliens)
             {
-                alienToMove = 0;
-                aliens[alienToMove++].Move();
+                if (alien.CheckWallHit())
+                    wallHit = true;
             }
+
+            if (wallHit)
+            {
+                foreach (Alien alien in aliens)
+                {
+                    alien.MovingRight = !alien.MovingRight;
+                }
+            }
+            return wallHit;
         }
     }
 }

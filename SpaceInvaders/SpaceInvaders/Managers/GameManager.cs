@@ -21,11 +21,11 @@ namespace SpaceInvaders
         EnemyManager enemyManager;
         
 
-        public GameManager()
+        public GameManager(int panelWidth, int panelHeight)
         {
-            mainShip = new MainShip(350, 750, new Bitmap(Resources.player));
-            bullet = new Bullet(-100, -100, new Bitmap(Resources.PlayerShot));
-            enemyManager = new EnemyManager();
+            mainShip = new MainShip(350, 750, new Bitmap(Resources.player), panelWidth, panelHeight);
+            bullet = new Bullet(-100, -100, new Bitmap(Resources.PlayerShot), panelWidth, panelHeight);
+            enemyManager = new EnemyManager(panelWidth, panelHeight);
             enemyManager.GenerateEnemies();
         }
         

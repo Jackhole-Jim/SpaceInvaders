@@ -19,7 +19,7 @@ namespace SpaceInvaders
         {
             InitializeComponent();
 
-            manager = new GameManager();
+            manager = new GameManager(drawingPanel.Width, drawingPanel.Height);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
             typeof(Panel).InvokeMember("DoubleBuffered",
             BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
