@@ -48,7 +48,7 @@ namespace SpaceInvaders.Enemies
         private const int ALIEN_Y_DROP = 50;
         public bool MovingRight { get; set; }
 
-        public TopEnemy(int x, int y, Bitmap image, Panel drawingPanel) : base(x, y, image, drawingPanel) { MovingRight = true; }
+        public TopEnemy(int x, int y, bool dead, Bitmap image) : base(x, y, false, image) { MovingRight = true; }
 
         public override void Move(int deltaX = 5, int deltaY = 5)
         {
@@ -71,6 +71,7 @@ namespace SpaceInvaders.Enemies
                 X -= deltaX;
             }
             //Y = deltaY;
+
         }
     }
 }
