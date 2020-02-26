@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,11 +20,16 @@ namespace SpaceInvaders
             InitializeComponent();
 
             manager = new GameManager();
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
+            typeof(Panel).InvokeMember("DoubleBuffered",
+            BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+            null, drawingPanel, new object[] { true });
             Invalidate();
         }
 
         private void tick_Tick(object sender, EventArgs e)
         {
+            //Invalidate();
             drawingPanel.Invalidate();
         }
         

@@ -22,7 +22,7 @@ namespace SpaceInvaders.Managers
         private const int INITIAL_ALIEN_Y = 300;
         
         private int alienToMove = 0;
-        private List<TopEnemy> aliens = new List<TopEnemy>();
+        private List<Alien> aliens = new List<Alien>();
         private List<Bitmap> alienBmps = new List<Bitmap>();
         Panel panel;
 
@@ -50,7 +50,7 @@ namespace SpaceInvaders.Managers
             {
                 for (int j = 0; j < ENEMIES_PER_ROW; j++)
                 {
-                    aliens.Add(new TopEnemy(x, y, alienImg));
+                    aliens.Add(new Alien(x, y, alienImg));
                     x += ENEMIES_COL_SPACING;
                 }
                 y -= ENEMIES_ROW_SPACING;
@@ -64,7 +64,7 @@ namespace SpaceInvaders.Managers
 
         public void ShowEnemies(PaintEventArgs e)
         {
-            foreach (TopEnemy alien in aliens)
+            foreach (Alien alien in aliens)
             {
                 alien.Show(e);
             }
