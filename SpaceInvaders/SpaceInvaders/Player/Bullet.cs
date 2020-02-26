@@ -11,7 +11,7 @@ namespace SpaceInvaders.Player
 {
     public class Bullet: MovableObject
     {
-        public Bullet(int x, int y, Bitmap image) : base(x, y, false, image)
+        public Bullet(int x, int y, Bitmap image) : base(x, y, image)
         {
             Image = image;
         }

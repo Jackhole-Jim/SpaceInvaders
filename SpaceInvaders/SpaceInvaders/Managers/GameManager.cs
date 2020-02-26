@@ -17,28 +17,32 @@ namespace SpaceInvaders
     {
         private const int MAINSHIP_MOVE_DIST = 5;
         private MovableObject mainShip;
-        Panel panel;
+        private Bullet bullet;
         EnemyManager enemyManager;
+        
 
-        public GameManager(Panel drawingPanel)
+        public GameManager()
         {
-            this.panel = drawingPanel;
-            mainShip = new MainShip(350, 750, new Bitmap(Resources.player), drawingPanel);
-            enemyManager = new EnemyManager(drawingPanel);
+            mainShip = new MainShip(350, 750, new Bitmap(Resources.player));
+            bullet = new Bullet(-100, -100, new Bitmap(Resources.PlayerShot));
+            enemyManager = new EnemyManager();
             enemyManager.GenerateEnemies();
         }
-
-        public void ShowAll()
+        
+        public void ShowAll(PaintEventArgs e)
         {
-            mainShip.Show();
-            enemyManager.ShowEnemies();
+            mainShip.Show(e);
+            bullet.Show(e);
+            enemyManager.ShowEnemies(e);
         }
-
-        public void Move()
+        
+        public void Move(PaintEventArgs e)
         {
+            ShowAll(e);
+            bullet.Move(0, 0);
             enemyManager.MoveNextAlien();
         }
-
+        
         public void handlebuttonPressed(Keys key)
         {
             switch(key)
@@ -49,6 +53,9 @@ namespace SpaceInvaders
 
                 case Keys.Left:
                     mainShip.Move(-MAINSHIP_MOVE_DIST, 0);
+                    break;
+                case Keys.Space:
+                    bullet.Fire(mainShip.X, mainShip.Y);
                     break;
             }
         }

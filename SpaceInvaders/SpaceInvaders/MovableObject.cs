@@ -15,20 +15,19 @@ namespace SpaceInvaders
       public int Y { get; set; }
       public Bitmap Image { get; set; }
 
-      protected MovableObject(int x, int y, bool dead, Bitmap image)
+      protected MovableObject(int x, int y, Bitmap image)
       {
          this.X = x;
          this.Y = y;
          this.Image = image;
-         this.drawingPanel = drawingPanel;
-        }
+      }
 
       public abstract void Move(int deltaX, int deltaY);
       public void Show(PaintEventArgs e)
       {
          //Graphics graphics = drawingPanel.CreateGraphics();
-        // graphics.DrawImageUnscaled(Image, X, Y);
-        e.Graphics.DrawImage(Image, X, Y);
+         // graphics.DrawImageUnscaled(Image, X, Y);
+         e.Graphics.DrawImage(Image, X, Y);
       }
 
       public bool IsInPanel()

@@ -24,7 +24,6 @@ namespace SpaceInvaders
 
         private void tick_Tick(object sender, EventArgs e)
         {
-            manager.Move();
             drawingPanel.Invalidate();
         }
         

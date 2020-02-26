@@ -26,10 +26,13 @@ namespace SpaceInvaders.Managers
         private List<Bitmap> alienBmps = new List<Bitmap>();
         Panel panel;
 
+        public EnemyManager( ) { }
+
         public EnemyManager(Panel panel)
         {
             this.panel = panel;
         }
+
 
         public void GenerateEnemies()
         {
@@ -47,7 +50,7 @@ namespace SpaceInvaders.Managers
             {
                 for (int j = 0; j < ENEMIES_PER_ROW; j++)
                 {
-                    aliens.Add(new TopEnemy(x, y, alienImg, panel));
+                    aliens.Add(new TopEnemy(x, y, alienImg));
                     x += ENEMIES_COL_SPACING;
                 }
                 y -= ENEMIES_ROW_SPACING;
@@ -59,11 +62,11 @@ namespace SpaceInvaders.Managers
             }
         }
 
-        public void ShowEnemies()
+        public void ShowEnemies(PaintEventArgs e)
         {
             foreach (TopEnemy alien in aliens)
             {
-                alien.Show();
+                alien.Show(e);
             }
         }
 
