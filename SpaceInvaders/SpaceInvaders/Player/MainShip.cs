@@ -12,7 +12,7 @@ namespace SpaceInvaders.Player
     public class MainShip : MovableObject
     {
 
-      public MainShip(int x, int y, Bitmap image, Panel drawingPanel) : base(x, y, false, image, drawingPanel)
+      public MainShip(int x, int y, Bitmap image, Panel drawingPanel) : base(x, y, image, drawingPanel)
       {
             Image = image;
             Show();

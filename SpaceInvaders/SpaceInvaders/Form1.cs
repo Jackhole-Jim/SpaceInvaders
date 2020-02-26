@@ -24,12 +24,13 @@ namespace SpaceInvaders
 
         private void tick_Tick(object sender, EventArgs e)
         {
+            manager.Move();
             drawingPanel.Invalidate();
         }
         
         private void onPaint(object sender, PaintEventArgs e)
         {
-            manager.Move();
+            manager.ShowAll();
         }
 
         private void buttonPressed(object sender, KeyEventArgs e)

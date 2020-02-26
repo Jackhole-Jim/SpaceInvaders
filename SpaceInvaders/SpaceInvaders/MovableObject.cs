@@ -13,14 +13,12 @@ namespace SpaceInvaders
       protected Panel drawingPanel;
       public int X { get; set; }
       public int Y { get; set; }
-      public bool Dead { get; set; }
       public Bitmap Image { get; set; }
 
-      protected MovableObject(int x, int y, bool dead, Bitmap image, Panel drawingPanel)
+      protected MovableObject(int x, int y, Bitmap image, Panel drawingPanel)
       {
          this.X = x;
          this.Y = y;
-         this.Dead = dead;
          this.Image = image;
          this.drawingPanel = drawingPanel;
         }
