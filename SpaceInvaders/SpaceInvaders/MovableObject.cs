@@ -12,10 +12,11 @@ namespace SpaceInvaders
    {
       public int X { get; set; }
       public int Y { get; set; }
-      public Bitmap Image { get; set; }
+      public List<Bitmap> Image { get; set; }
       private int panelWidth, panelHeight;
+      private int frame = 0;
 
-      protected MovableObject(int x, int y, Bitmap image, int panelX, int panelY)
+      protected MovableObject(int x, int y, List<Bitmap> image, int panelX, int panelY)
       {
          this.X = x;
          this.Y = y;
@@ -27,13 +28,31 @@ namespace SpaceInvaders
       public abstract void Move(int deltaX, int deltaY);
       public void Show(PaintEventArgs e)
       {
-         e.Graphics.DrawImage(Image, X, Y);
+         e.Graphics.DrawImage(Image[frame], X, Y);
       }
 
-      public bool IsInPanel()
+        public void Animate()
+        {
+            if (frame < Image.Count() - 1)
+                frame++;
+            else
+                frame = 0;
+        }
+
+        public bool IsInPanel()
       {
-         return ((X > 0) && ((X + Image.Width) < panelWidth))
-         && ((Y > 0) && ((Y + Image.Height) < panelHeight));
+         return ((X > 0) && ((X + Image[frame].Width) < panelWidth))
+         && ((Y > 0) && ((Y + Image[frame].Height) < panelHeight));
       }
-   }
+
+        internal int Width()
+        {
+            return Image[frame].Width;
+        }
+
+        internal int Height()
+        {
+            return Image[frame].Height;
+        }
+    }
 }

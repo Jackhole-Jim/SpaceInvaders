@@ -12,13 +12,14 @@ namespace SpaceInvaders.Player
     public class MainShip : MovableObject
     {
 
-      public MainShip(int x, int y, Bitmap image, int panelWidth, int panelHeight) : base(x, y, image, panelWidth, panelHeight)
+      public MainShip(int x, int y, List<Bitmap> image, int panelWidth, int panelHeight) : base(x, y, image, panelWidth, panelHeight)
       {
             Image = image;
       }
       public override void Move(int deltaX, int deltaY)
       {
-            X += deltaX;         
+            X += deltaX;
+            Animate();
       }
 
       public override bool Equals(object obj)

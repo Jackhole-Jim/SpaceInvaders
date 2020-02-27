@@ -15,7 +15,7 @@ namespace SpaceInvaders.Enemies
 
         public bool MovingRight { get; set; }
 
-        public Alien(int x, int y, Bitmap image, int panelWidth, int panelHeight) : base(x, y, image, panelWidth, panelHeight)
+        public Alien(int x, int y, List<Bitmap> image, int panelWidth, int panelHeight) : base(x, y, image, panelWidth, panelHeight)
         { MovingRight = true; }
 
         public override void Move(int deltaX = 10, int deltaY = 5)
@@ -23,6 +23,7 @@ namespace SpaceInvaders.Enemies
             xMoveDistance = deltaX;
             yMoveDistance = deltaY;
             X = MovingRight ? X + deltaX : X - deltaX;
+            Animate();
         }
 
         public void MoveDown()

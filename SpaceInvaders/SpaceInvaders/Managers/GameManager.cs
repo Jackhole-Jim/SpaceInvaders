@@ -19,12 +19,18 @@ namespace SpaceInvaders
         private MovableObject mainShip;
         private Bullet bullet;
         EnemyManager enemyManager;
-        
+        List<Bitmap> playerSprites = new List<Bitmap>();
+        List<Bitmap> bulletSprites = new List<Bitmap>();
 
         public GameManager(int panelWidth, int panelHeight)
         {
-            mainShip = new MainShip(350, 750, new Bitmap(Resources.player), panelWidth, panelHeight);
-            bullet = new Bullet(-100, -100, new Bitmap(Resources.PlayerShot), panelWidth, panelHeight);
+            playerSprites.Add(new Bitmap(Resources.player));
+            playerSprites.Add(new Bitmap(Resources.PlayerExplosion1));
+            playerSprites.Add(new Bitmap(Resources.PlayerExplosion2));
+            bulletSprites.Add(new Bitmap(Resources.PlayerShot));
+            bulletSprites.Add(new Bitmap(Resources.PlayerShotExplosion));
+            mainShip = new MainShip(350, 750, playerSprites, panelWidth, panelHeight);
+            bullet = new Bullet(-100, -100, bulletSprites, panelWidth, panelHeight);
             enemyManager = new EnemyManager(panelWidth, panelHeight);
             enemyManager.GenerateEnemies();
         }
@@ -59,8 +65,8 @@ namespace SpaceInvaders
 
         public Boolean Collision(MovableObject a, MovableObject b)
         {
-            if (a.X < b.X + b.Image.Width && a.X > b.X)
-                if (a.Y < b.Y + b.Image.Height && a.Y > b.Y)
+            if (a.X < b.X + b.Width() && a.X > b.X)
+                if (a.Y < b.Y + b.Height() && a.Y > b.Y)
                     return true;
                 else
                     return false;

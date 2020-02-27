@@ -23,6 +23,7 @@ namespace SpaceInvaders.Managers
         private int alienToMove = 0;
         private List<Alien> aliens = new List<Alien>();
         private List<Bitmap> alienBmps = new List<Bitmap>();
+        private List<List<Bitmap>> alienSpriteList = new List<List<Bitmap>>();
         private int panelWidth;
         private int panelHeight;
         private bool moveDown = false;
@@ -38,29 +39,38 @@ namespace SpaceInvaders.Managers
         {
             int x = INITIAL_ALIEN_X;
             int y = INITIAL_ALIEN_Y;
+            int rowCount = 0;
 
-            alienBmps.Add(new Bitmap(Resources.AlienC1));
-            alienBmps.Add(new Bitmap(Resources.AlienC1));
-            alienBmps.Add(new Bitmap(Resources.AlienB1));
-            alienBmps.Add(new Bitmap(Resources.AlienB1));
-            alienBmps.Add(new Bitmap(Resources.AlienA1));
+            alienSpriteList.Add(new List<Bitmap>());
+            alienSpriteList.Add(new List<Bitmap>());
+            alienSpriteList.Add(new List<Bitmap>());
+            alienSpriteList[0].Add(new Bitmap(Resources.AlienC1));
+            alienSpriteList[0].Add(new Bitmap(Resources.AlienC2));
+            alienSpriteList[1].Add(new Bitmap(Resources.AlienB1));
+            alienSpriteList[1].Add(new Bitmap(Resources.AlienB2));
+            alienSpriteList[2].Add(new Bitmap(Resources.AlienA1));
+            alienSpriteList[2].Add(new Bitmap(Resources.AlienA2));
 
-            Bitmap alienImg = alienBmps[0];
+            int alienImg = 0;
             for (int i = 0; i < NUM_OF_ROWS; i++)
             {
-                for (int j = 0; j < ENEMIES_PER_ROW; j++)
-                {
-                    Alien newAlien = new Alien(x, y, alienImg, panelWidth, panelHeight);
-                    aliens.Add(newAlien);
 
-                    x += ENEMIES_COL_SPACING;
-                }
-                y -= ENEMIES_ROW_SPACING;
-                x = INITIAL_ALIEN_X;
-                if ((i + 1) < NUM_OF_ROWS)
+                    for (int j = 0; j < ENEMIES_PER_ROW; j++)
+                    {
+                        Alien newAlien = new Alien(x, y, alienSpriteList[alienImg], panelWidth, panelHeight);
+                        aliens.Add(newAlien);
+
+                        x += ENEMIES_COL_SPACING;
+                    }
+                    y -= ENEMIES_ROW_SPACING;
+                    x = INITIAL_ALIEN_X;
+                if (rowCount == 1)
                 {
-                    alienImg = alienBmps[i + 1];
+                    rowCount = 0;
+                    alienImg++;
                 }
+                else
+                    rowCount++;
             }
         }
 
