@@ -64,6 +64,11 @@ namespace SpaceInvaders.Managers
             }
         }
 
+        public List<Alien> GetAliens()
+        {
+            return aliens;
+        }
+
         public void ShowEnemies(PaintEventArgs e)
         {
             foreach (Alien alien in aliens)

@@ -34,5 +34,11 @@ namespace SpaceInvaders.Player
                 Y = y - 10;
             }
         }
+
+        public void reset()
+        {
+            X = -100;
+            Y = -100;
+        }
     }
 }

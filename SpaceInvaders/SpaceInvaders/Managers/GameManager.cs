@@ -38,11 +38,36 @@ namespace SpaceInvaders
         
         public void Move(PaintEventArgs e)
         {
-            ShowAll(e);
             bullet.Move(0, 0);
             enemyManager.MoveNextAlien();
+            ShowAll(e);
+            CheckCollision(enemyManager.GetAliens());
         }
         
+        public void CheckCollision(List<Alien> aliens)
+        {
+            foreach (Alien alien in aliens)
+            {
+                if (Collision(bullet, alien))
+                { 
+                    enemyManager.GetAliens().Remove(alien);
+                    bullet.reset();
+                    return;
+                }
+            }
+        }
+
+        public Boolean Collision(MovableObject a, MovableObject b)
+        {
+            if (a.X < b.X + b.Image.Width && a.X > b.X)
+                if (a.Y < b.Y + b.Image.Height && a.Y > b.Y)
+                    return true;
+                else
+                    return false;
+            else
+                return false;
+        }
+
         public void handlebuttonPressed(Keys key)
         {
             switch(key)
