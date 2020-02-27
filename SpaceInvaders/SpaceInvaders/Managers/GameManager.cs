@@ -18,6 +18,7 @@ namespace SpaceInvaders
         private const int MAINSHIP_MOVE_DIST = 5;
         private MovableObject mainShip;
         private Bullet bullet;
+        public int score = 0;
         EnemyManager enemyManager;
         List<Bitmap> playerSprites = new List<Bitmap>();
         List<Bitmap> bulletSprites = new List<Bitmap>();
@@ -25,8 +26,6 @@ namespace SpaceInvaders
         public GameManager(int panelWidth, int panelHeight)
         {
             playerSprites.Add(new Bitmap(Resources.player));
-            playerSprites.Add(new Bitmap(Resources.PlayerExplosion1));
-            playerSprites.Add(new Bitmap(Resources.PlayerExplosion2));
             bulletSprites.Add(new Bitmap(Resources.PlayerShot));
             bulletSprites.Add(new Bitmap(Resources.PlayerShotExplosion));
             mainShip = new MainShip(350, 750, playerSprites, panelWidth, panelHeight);
@@ -50,13 +49,21 @@ namespace SpaceInvaders
             CheckCollision(enemyManager.GetAliens());
         }
         
+        public Boolean Count()
+        {
+            return enemyManager.EnemyCount();
+        }
+
         public void CheckCollision(List<Alien> aliens)
         {
             foreach (Alien alien in aliens)
             {
                 if (Collision(bullet, alien))
-                { 
+                {
+                    enemyManager.Reduce(alien);
                     enemyManager.GetAliens().Remove(alien);
+
+                    score += 600;
                     bullet.reset();
                     return;
                 }

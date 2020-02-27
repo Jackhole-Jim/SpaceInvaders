@@ -20,7 +20,7 @@ namespace SpaceInvaders.Managers
         private const int INITIAL_ALIEN_Y = 300;
 
 
-        private int alienToMove = 0;
+        public int alienToMove = 0;
         private List<Alien> aliens = new List<Alien>();
         private List<Bitmap> alienBmps = new List<Bitmap>();
         private List<List<Bitmap>> alienSpriteList = new List<List<Bitmap>>();
@@ -33,7 +33,10 @@ namespace SpaceInvaders.Managers
             this.panelHeight = panelHeight;
         }
 
-
+        public Boolean EnemyCount()
+        {
+            return aliens.Count() == 0;
+        }
 
         public void GenerateEnemies()
         {
@@ -72,6 +75,13 @@ namespace SpaceInvaders.Managers
                 else
                     rowCount++;
             }
+        }
+
+        internal void Reduce(Alien a)
+        {
+            int place = aliens.IndexOf(a);
+            if (alienToMove > place)
+                alienToMove--;
         }
 
         public List<Alien> GetAliens()

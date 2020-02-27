@@ -33,6 +33,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.drawingPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblScore1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.drawingPanel.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +54,7 @@
             // 
             // drawingPanel
             // 
+            this.drawingPanel.Controls.Add(this.lblScore1);
             this.drawingPanel.Controls.Add(this.label1);
             this.drawingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.drawingPanel.Location = new System.Drawing.Point(0, 0);
@@ -71,6 +73,17 @@
             this.label1.Size = new System.Drawing.Size(596, 58);
             this.label1.TabIndex = 0;
             this.label1.Text = "SCORE<1>        HI-SCORE        SCORE<2>";
+            // 
+            // lblScore1
+            // 
+            this.lblScore1.AutoSize = true;
+            this.lblScore1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblScore1.Location = new System.Drawing.Point(93, 67);
+            this.lblScore1.Name = "lblScore1";
+            this.lblScore1.Size = new System.Drawing.Size(11, 16);
+            this.lblScore1.TabIndex = 1;
+            this.lblScore1.Text = " ";
             // 
             // Form1
             // 
@@ -99,6 +112,7 @@
         private System.Windows.Forms.Timer tick;
         private System.Windows.Forms.Panel drawingPanel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblScore1;
     }
 }
 

@@ -31,6 +31,9 @@ namespace SpaceInvaders
         {
             //Invalidate();
             drawingPanel.Invalidate();
+            lblScore1.Text = manager.score.ToString();
+            if (manager.Count())
+                label1.Text = "You Win!";
         }
         
         private void onPaint(object sender, PaintEventArgs e)
