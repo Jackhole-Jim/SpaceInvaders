@@ -1,0 +1,16 @@
+Currently Space Invaders has the ability to:
+	*Move the main ship back and forth horizontally, using the left and right keys on the keyboard. 
+	*Enemy Aliens are displayed and move left and right, and once a wall is hit they shift down
+	*The main ship can shoot bullets towards aliens, if the bullet collides with the alien the alien is destroyed
+	*The game calculates a score for every alien you hit, based on this score it determines when you win the game (after destroying all the aliens)
+	*The aliens character changes correspondingly to when it moves every turn.
+	*The alien and bullet display an animation when colliding with each other.
+	
+Features not implemented yet:
+	*Alien ships shooting back
+	*Game losing screen when the aliens get too low or run out of lives
+	*Lives for the main ship
+	*Game sounds
+	*Game starting screen
+	*Rock barrier for cover
+	*High score tracking

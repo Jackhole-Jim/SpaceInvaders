@@ -1,0 +1,3 @@
+Run the "SpaceInvaders.exe" from this file location. 
+
+In the event that this does not work, please open the source solution file in Visual Studio 2015/2017(2019 may work), and build the application from within Visual Studio. 
