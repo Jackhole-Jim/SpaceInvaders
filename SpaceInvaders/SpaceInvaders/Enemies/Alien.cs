@@ -12,17 +12,22 @@ namespace SpaceInvaders.Enemies
     {
         private int xMoveDistance = 10;
         private int yMoveDistance = 10;
-
+        public int deadTimer = 0;
         public bool MovingRight { get; set; }
 
-        public Alien(int x, int y, List<Bitmap> image, int panelWidth, int panelHeight) : base(x, y, image, panelWidth, panelHeight)
+        public Alien(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight)
         { MovingRight = true; }
 
         public override void Move(int deltaX = 10, int deltaY = 5)
         {
-            xMoveDistance = deltaX;
-            yMoveDistance = deltaY;
-            X = MovingRight ? X + deltaX : X - deltaX;
+            if (!dead)
+            {
+                xMoveDistance = deltaX;
+                yMoveDistance = deltaY;
+                X = MovingRight ? X + deltaX : X - deltaX;
+            }
+            else
+                deadTimer++;
             Animate();
         }
 

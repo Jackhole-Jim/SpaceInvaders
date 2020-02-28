@@ -21,15 +21,19 @@ namespace SpaceInvaders
         public int score = 0;
         EnemyManager enemyManager;
         List<Bitmap> playerSprites = new List<Bitmap>();
+        List<Bitmap> playerDSprites = new List<Bitmap>();
         List<Bitmap> bulletSprites = new List<Bitmap>();
+        List<Bitmap> bulletDSprites = new List<Bitmap>();
 
         public GameManager(int panelWidth, int panelHeight)
         {
             playerSprites.Add(new Bitmap(Resources.player));
+            playerDSprites.Add(new Bitmap(Resources.PlayerExplosion1));
+            playerDSprites.Add(new Bitmap(Resources.PlayerExplosion2));
             bulletSprites.Add(new Bitmap(Resources.PlayerShot));
-            bulletSprites.Add(new Bitmap(Resources.PlayerShotExplosion));
-            mainShip = new MainShip(350, 750, playerSprites, panelWidth, panelHeight);
-            bullet = new Bullet(-100, -100, bulletSprites, panelWidth, panelHeight);
+            bulletDSprites.Add(new Bitmap(Resources.PlayerShotExplosion));
+            mainShip = new MainShip(350, 750, playerSprites, playerDSprites, panelWidth, panelHeight);
+            bullet = new Bullet(-100, -100, bulletSprites, bulletDSprites, panelWidth, panelHeight);
             enemyManager = new EnemyManager(panelWidth, panelHeight);
             enemyManager.GenerateEnemies();
         }
@@ -47,8 +51,28 @@ namespace SpaceInvaders
             enemyManager.MoveNextAlien();
             ShowAll(e);
             CheckCollision(enemyManager.GetAliens());
+            if (bullet.timer == 5)
+            {
+                bullet.reset();
+                bullet.timer = 0;
+                bullet.dead = false;
+            }
+            RemoveDead(enemyManager.GetAliens());
         }
-        
+
+        private void RemoveDead(List<Alien> aliens)
+        {
+            foreach (Alien alien in aliens)
+            {
+                if (alien.dead && alien.deadTimer > 5)
+                {
+                    enemyManager.Reduce(alien);
+                    aliens.Remove(alien);
+                    return;
+                }
+            }
+        }
+
         public Boolean Count()
         {
             return enemyManager.EnemyCount();
@@ -56,24 +80,26 @@ namespace SpaceInvaders
 
         public void CheckCollision(List<Alien> aliens)
         {
-            foreach (Alien alien in aliens)
+            if (!bullet.dead)
             {
-                if (Collision(bullet, alien))
+                foreach (Alien alien in aliens)
                 {
-                    enemyManager.Reduce(alien);
-                    enemyManager.GetAliens().Remove(alien);
-
-                    score += 600;
-                    bullet.reset();
-                    return;
+                    if (Collision(bullet, alien))
+                    {
+                        bullet.dead = true;
+                        bullet.X -= 10;
+                        score += 600;
+                        alien.dead = true;
+                        return;
+                    }
                 }
             }
         }
 
         public Boolean Collision(MovableObject a, MovableObject b)
         {
-            if (a.X < b.X + b.Width() && a.X > b.X)
-                if (a.Y < b.Y + b.Height() && a.Y > b.Y)
+            if ((a.X < b.X + b.Width() && a.X > b.X) || (a.X + a.Width() < b.X + b.Width() && a.X + a.Width() > b.X))
+                if ((a.Y < b.Y + b.Height() && a.Y > b.Y) || (a.Y + a.Height() < b.Y + b.Height() && a.Y + a.Height() > b.Y))
                     return true;
                 else
                     return false;

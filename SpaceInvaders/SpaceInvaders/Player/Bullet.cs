@@ -11,19 +11,25 @@ namespace SpaceInvaders.Player
 {
     public class Bullet: MovableObject
     {
-        public Bullet(int x, int y, List<Bitmap> image, int panelWidth, int panelHeight) : base(x, y, image, panelWidth, panelHeight)
+        public int timer = 0;
+        public Bullet(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight)
         {
             Image = image;
         }
 
         public override void Move(int deltaX, int deltaY)
         {
-            if (Y == -100)
-                return;
-            else if (Y <= 0)
-                Y = -100;
+            if (!dead)
+            {
+                if (Y == -100)
+                    return;
+                else if (Y <= 0)
+                    Y = -100;
+                else
+                    Y += -10;
+            }
             else
-                Y += -20;
+                timer++;
         }
 
         internal void Fire(int x, int y)

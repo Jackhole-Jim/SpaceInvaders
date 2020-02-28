@@ -24,6 +24,7 @@ namespace SpaceInvaders.Managers
         private List<Alien> aliens = new List<Alien>();
         private List<Bitmap> alienBmps = new List<Bitmap>();
         private List<List<Bitmap>> alienSpriteList = new List<List<Bitmap>>();
+        private List<Bitmap> alienDeadSprite = new List<Bitmap>();
         private int panelWidth;
         private int panelHeight;
         private bool moveDown = false;
@@ -53,6 +54,7 @@ namespace SpaceInvaders.Managers
             alienSpriteList[1].Add(new Bitmap(Resources.AlienB2));
             alienSpriteList[2].Add(new Bitmap(Resources.AlienA1));
             alienSpriteList[2].Add(new Bitmap(Resources.AlienA2));
+            alienDeadSprite.Add(new Bitmap(Resources.AlienPop));
 
             int alienImg = 0;
             for (int i = 0; i < NUM_OF_ROWS; i++)
@@ -60,7 +62,7 @@ namespace SpaceInvaders.Managers
 
                     for (int j = 0; j < ENEMIES_PER_ROW; j++)
                     {
-                        Alien newAlien = new Alien(x, y, alienSpriteList[alienImg], panelWidth, panelHeight);
+                        Alien newAlien = new Alien(x, y, alienSpriteList[alienImg], alienDeadSprite, panelWidth, panelHeight);
                         aliens.Add(newAlien);
 
                         x += ENEMIES_COL_SPACING;
@@ -103,7 +105,8 @@ namespace SpaceInvaders.Managers
             {
                 moveDown = CheckIfWallHit();
             }
-
+            if (alienToMove > aliens.Count)
+                alienToMove = 0;
             if (alienToMove < aliens.Count)
             {
                 if (moveDown)
@@ -112,6 +115,12 @@ namespace SpaceInvaders.Managers
                     aliens[alienToMove++].Move();
                 if (alienToMove == aliens.Count)
                     alienToMove = 0;
+            }
+            
+            foreach(Alien a in aliens)
+            {
+                if (a.dead)
+                    a.Move();
             }
         }
 

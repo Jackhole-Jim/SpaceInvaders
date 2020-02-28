@@ -30,8 +30,11 @@ namespace SpaceInvaders
         private void tick_Tick(object sender, EventArgs e)
         {
             //Invalidate();
-            drawingPanel.Invalidate();
-            lblScore1.Text = manager.score.ToString();
+            if (!String.Equals(label1.Text, "You Win!"))
+            {
+                drawingPanel.Invalidate();
+                lblScore1.Text = manager.score.ToString();
+            }
             if (manager.Count())
                 label1.Text = "You Win!";
         }
