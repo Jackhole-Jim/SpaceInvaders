@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ namespace SpaceInvaders.Player
     public class Bullet: MovableObject
     {
         public int timer = 0;
+        SoundPlayer sound = new SoundPlayer(Resources.shoot);
         public Bullet(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight)
         {
             Image = image;
@@ -36,8 +38,10 @@ namespace SpaceInvaders.Player
         {
             if (Y == -100)
             {
+                sound.Play();
                 X = x + 24;
                 Y = y - 10;
+                
             }
         }
 

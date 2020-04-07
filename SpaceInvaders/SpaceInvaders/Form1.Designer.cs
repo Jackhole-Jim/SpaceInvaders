@@ -32,8 +32,8 @@
             this.tick = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.drawingPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblScore1 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.drawingPanel.SuspendLayout();
             this.SuspendLayout();
@@ -41,7 +41,7 @@
             // tick
             // 
             this.tick.Enabled = true;
-            this.tick.Interval = 20;
+            this.tick.Interval = 15;
             this.tick.Tick += new System.EventHandler(this.tick_Tick);
             // 
             // pictureBox1
@@ -63,17 +63,6 @@
             this.drawingPanel.TabIndex = 1;
             this.drawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.onPaint);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Agency FB", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(54, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(596, 58);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "SCORE<1>        HI-SCORE        SCORE<2>";
-            // 
             // lblScore1
             // 
             this.lblScore1.AutoSize = true;
@@ -85,6 +74,17 @@
             this.lblScore1.TabIndex = 1;
             this.lblScore1.Text = " ";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Agency FB", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(54, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(596, 58);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "SCORE<1>        HI-SCORE        SCORE<2>";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -94,6 +94,7 @@
             this.Controls.Add(this.drawingPanel);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

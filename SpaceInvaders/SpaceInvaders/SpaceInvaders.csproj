@@ -174,5 +174,23 @@
   <ItemGroup>
     <None Include="Resources\PlayerShotExplosion.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shoot.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invaderkilled.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fastinvader1.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fastinvader2.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fastinvader3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fastinvader4.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

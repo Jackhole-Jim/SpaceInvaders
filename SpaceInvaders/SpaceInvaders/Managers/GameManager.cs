@@ -10,6 +10,7 @@ using SpaceInvaders.Properties;
 using System.Drawing;
 using System.Collections;
 using SpaceInvaders.Managers;
+using System.Media;
 
 namespace SpaceInvaders
 {
@@ -19,6 +20,7 @@ namespace SpaceInvaders
         private MovableObject mainShip;
         private Bullet bullet;
         public int score = 0;
+        SoundPlayer player;
         EnemyManager enemyManager;
         List<Bitmap> playerSprites = new List<Bitmap>();
         List<Bitmap> playerDSprites = new List<Bitmap>();
@@ -86,6 +88,8 @@ namespace SpaceInvaders
                 {
                     if (Collision(bullet, alien))
                     {
+                        player = new SoundPlayer(Resources.invaderkilled);
+                        player.Play();
                         bullet.dead = true;
                         bullet.X -= 10;
                         score += 600;

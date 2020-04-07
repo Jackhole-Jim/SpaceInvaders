@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,12 +20,13 @@ namespace SpaceInvaders.Managers
         private const int INITIAL_ALIEN_X = 20;
         private const int INITIAL_ALIEN_Y = 300;
 
-
+        private int counter = 0;
         public int alienToMove = 0;
         private List<Alien> aliens = new List<Alien>();
         private List<Bitmap> alienBmps = new List<Bitmap>();
         private List<List<Bitmap>> alienSpriteList = new List<List<Bitmap>>();
         private List<Bitmap> alienDeadSprite = new List<Bitmap>();
+        private SoundPlayer sounds;
         private int panelWidth;
         private int panelHeight;
         private bool moveDown = false;
@@ -103,6 +105,29 @@ namespace SpaceInvaders.Managers
         {
             if (alienToMove == 0)
             {
+                if (++counter > 4)
+                    counter = 1;
+                switch(counter)
+                {
+                    case 1:
+                        sounds = new SoundPlayer(Resources.fastinvader1);
+                        sounds.Play();
+                        break;
+                    case 2:
+                        sounds = new SoundPlayer(Resources.fastinvader2);
+                        sounds.Play();
+                        break;
+                    case 3:
+                        sounds = new SoundPlayer(Resources.fastinvader3);
+                        sounds.Play();
+                        break;
+                    case 4:
+                        sounds = new SoundPlayer(Resources.fastinvader4);
+                        sounds.Play();
+                        break;
+                }
+                
+
                 moveDown = CheckIfWallHit();
             }
             if (alienToMove > aliens.Count)
