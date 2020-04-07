@@ -1,9 +1,11 @@
-﻿using System;
+﻿using SpaceInvaders.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +38,12 @@ namespace SpaceInvaders
                 lblScore1.Text = manager.score.ToString();
             }
             if (manager.Count())
+            {
+                SoundPlayer sounds = new SoundPlayer(Resources.spaceinvaders1);
                 label1.Text = "You Win!";
+                sounds.Play();
+            }
+               
         }
         
         private void onPaint(object sender, PaintEventArgs e)

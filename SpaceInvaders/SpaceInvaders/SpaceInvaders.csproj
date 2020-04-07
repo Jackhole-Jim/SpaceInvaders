@@ -192,5 +192,11 @@
   <ItemGroup>
     <None Include="Resources\fastinvader4.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spaceinvaders1.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

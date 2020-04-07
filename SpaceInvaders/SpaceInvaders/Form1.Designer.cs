@@ -29,37 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tick = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.drawingPanel = new System.Windows.Forms.Panel();
             this.lblScore1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.drawingPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tick
             // 
             this.tick.Enabled = true;
-            this.tick.Interval = 15;
+            this.tick.Interval = 30;
             this.tick.Tick += new System.EventHandler(this.tick_Tick);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(140, 533);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // drawingPanel
             // 
             this.drawingPanel.Controls.Add(this.lblScore1);
             this.drawingPanel.Controls.Add(this.label1);
-            this.drawingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.drawingPanel.Cursor = System.Windows.Forms.Cursors.Default;
             this.drawingPanel.Location = new System.Drawing.Point(0, 0);
             this.drawingPanel.Name = "drawingPanel";
-            this.drawingPanel.Size = new System.Drawing.Size(700, 800);
+            this.drawingPanel.Size = new System.Drawing.Size(701, 805);
             this.drawingPanel.TabIndex = 1;
             this.drawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.onPaint);
             // 
@@ -85,6 +78,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "SCORE<1>        HI-SCORE        SCORE<2>";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(140, 533);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -93,15 +94,16 @@
             this.ClientSize = new System.Drawing.Size(700, 800);
             this.Controls.Add(this.drawingPanel);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Space Invaders";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonPressed);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.drawingPanel.ResumeLayout(false);
             this.drawingPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

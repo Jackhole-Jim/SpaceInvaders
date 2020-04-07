@@ -217,10 +217,16 @@
   <data name="fastinvader4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fastinvader4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="invaderkilled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\invaderkilled.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="shoot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shoot.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spaceinvaders1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spaceinvaders1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
