@@ -19,7 +19,7 @@ namespace SpaceInvaders
         private GameManager manager;
         private bool gameRunning = false;
         private MediaPlayer sounds = new MediaPlayer();
-       
+        private MediaPlayer startSound = new MediaPlayer();
 
         public Form1()
         {
@@ -32,6 +32,8 @@ namespace SpaceInvaders
             null, drawingPanel, new object[] { true });
             Invalidate();
             sounds.Open(new Uri(Util.bingPathToAppDir("Resources\\spaceinvaders1.wav")));
+            startSound.Open(new Uri(Util.bingPathToAppDir("Resources\\spaceinvaders2.wav")));
+            startSound.Play();
         }
 
         private void tick_Tick(object sender, EventArgs e)
@@ -85,6 +87,7 @@ namespace SpaceInvaders
         {
             if(e.KeyCode == Keys.P)
             {
+                startSound.Stop();
                 HideGameStartScreen();
                 gameRunning = true;
             }
