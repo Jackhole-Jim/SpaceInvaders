@@ -1,4 +1,6 @@
-﻿namespace SpaceInvaders
+﻿using SpaceInvaders.Properties;
+
+namespace SpaceInvaders
 {
     partial class Form1
     {
@@ -117,8 +119,10 @@
             // 
             // startpb4
             // 
+            this.startpb4.BackColor = System.Drawing.Color.Transparent;
+            this.startpb4.Image = global::SpaceInvaders.Properties.Resources.AlienC1;
             this.startpb4.InitialImage = global::SpaceInvaders.Properties.Resources.AlienC1;
-            this.startpb4.Location = new System.Drawing.Point(228, 549);
+            this.startpb4.Location = new System.Drawing.Point(232, 545);
             this.startpb4.Name = "startpb4";
             this.startpb4.Size = new System.Drawing.Size(45, 35);
             this.startpb4.TabIndex = 19;
@@ -126,28 +130,34 @@
             // 
             // startpb3
             // 
+            this.startpb3.BackColor = System.Drawing.Color.Transparent;
+            this.startpb3.Image = global::SpaceInvaders.Properties.Resources.AlienB2;
             this.startpb3.InitialImage = global::SpaceInvaders.Properties.Resources.AlienB2;
-            this.startpb3.Location = new System.Drawing.Point(228, 498);
+            this.startpb3.Location = new System.Drawing.Point(231, 493);
             this.startpb3.Name = "startpb3";
-            this.startpb3.Size = new System.Drawing.Size(45, 35);
+            this.startpb3.Size = new System.Drawing.Size(51, 34);
             this.startpb3.TabIndex = 18;
             this.startpb3.TabStop = false;
             // 
             // startpb2
             // 
+            this.startpb2.BackColor = System.Drawing.Color.Transparent;
+            this.startpb2.Image = global::SpaceInvaders.Properties.Resources.AlienA1;
             this.startpb2.InitialImage = global::SpaceInvaders.Properties.Resources.AlienA1;
-            this.startpb2.Location = new System.Drawing.Point(228, 448);
+            this.startpb2.Location = new System.Drawing.Point(235, 438);
             this.startpb2.Name = "startpb2";
-            this.startpb2.Size = new System.Drawing.Size(45, 35);
+            this.startpb2.Size = new System.Drawing.Size(45, 28);
             this.startpb2.TabIndex = 17;
             this.startpb2.TabStop = false;
             // 
             // startpb1
             // 
+            this.startpb1.BackColor = System.Drawing.Color.Transparent;
+            this.startpb1.Image = global::SpaceInvaders.Properties.Resources.AlienUFO;
             this.startpb1.InitialImage = global::SpaceInvaders.Properties.Resources.AlienUFO;
-            this.startpb1.Location = new System.Drawing.Point(228, 393);
+            this.startpb1.Location = new System.Drawing.Point(229, 387);
             this.startpb1.Name = "startpb1";
-            this.startpb1.Size = new System.Drawing.Size(45, 35);
+            this.startpb1.Size = new System.Drawing.Size(51, 30);
             this.startpb1.TabIndex = 16;
             this.startpb1.TabStop = false;
             // 
@@ -168,7 +178,7 @@
             this.startLbl7.AutoSize = true;
             this.startLbl7.Font = new System.Drawing.Font("Agency FB", 24F);
             this.startLbl7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.startLbl7.Location = new System.Drawing.Point(274, 549);
+            this.startLbl7.Location = new System.Drawing.Point(274, 534);
             this.startLbl7.Name = "startLbl7";
             this.startLbl7.Size = new System.Drawing.Size(179, 40);
             this.startLbl7.TabIndex = 13;
@@ -180,7 +190,7 @@
             this.startLbl6.AutoSize = true;
             this.startLbl6.Font = new System.Drawing.Font("Agency FB", 24F);
             this.startLbl6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLbl6.Location = new System.Drawing.Point(271, 499);
+            this.startLbl6.Location = new System.Drawing.Point(271, 484);
             this.startLbl6.Name = "startLbl6";
             this.startLbl6.Size = new System.Drawing.Size(186, 40);
             this.startLbl6.TabIndex = 12;
@@ -192,7 +202,7 @@
             this.startLbl5.AutoSize = true;
             this.startLbl5.Font = new System.Drawing.Font("Agency FB", 24F);
             this.startLbl5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLbl5.Location = new System.Drawing.Point(271, 444);
+            this.startLbl5.Location = new System.Drawing.Point(271, 429);
             this.startLbl5.Name = "startLbl5";
             this.startLbl5.Size = new System.Drawing.Size(186, 40);
             this.startLbl5.TabIndex = 11;
@@ -204,7 +214,7 @@
             this.startLbl4.AutoSize = true;
             this.startLbl4.Font = new System.Drawing.Font("Agency FB", 24F);
             this.startLbl4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLbl4.Location = new System.Drawing.Point(274, 392);
+            this.startLbl4.Location = new System.Drawing.Point(274, 377);
             this.startLbl4.Name = "startLbl4";
             this.startLbl4.Size = new System.Drawing.Size(180, 40);
             this.startLbl4.TabIndex = 10;
@@ -216,7 +226,7 @@
             this.startLbl3.AutoSize = true;
             this.startLbl3.Font = new System.Drawing.Font("Agency FB", 24F);
             this.startLbl3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLbl3.Location = new System.Drawing.Point(159, 328);
+            this.startLbl3.Location = new System.Drawing.Point(156, 322);
             this.startLbl3.Name = "startLbl3";
             this.startLbl3.Size = new System.Drawing.Size(377, 40);
             this.startLbl3.TabIndex = 9;
@@ -228,7 +238,7 @@
             this.startLbl2.AutoSize = true;
             this.startLbl2.Font = new System.Drawing.Font("Agency FB", 24F);
             this.startLbl2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLbl2.Location = new System.Drawing.Point(217, 254);
+            this.startLbl2.Location = new System.Drawing.Point(215, 254);
             this.startLbl2.Name = "startLbl2";
             this.startLbl2.Size = new System.Drawing.Size(272, 40);
             this.startLbl2.TabIndex = 8;
@@ -326,7 +336,6 @@
             this.Controls.Add(this.drawingPanel);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
