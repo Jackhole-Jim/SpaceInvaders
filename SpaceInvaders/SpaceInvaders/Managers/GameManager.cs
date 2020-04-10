@@ -137,6 +137,8 @@ namespace SpaceInvaders
                 case Keys.Space:
                     bullet.Fire(mainShip.X, mainShip.Y);
                     break;
+                default:
+                    break;
             }
         }
     }

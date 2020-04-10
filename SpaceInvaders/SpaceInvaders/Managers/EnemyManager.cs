@@ -56,6 +56,13 @@ namespace SpaceInvaders.Managers
 
         public Boolean EnemyCount()
         {
+            if (aliens.Count == 0)
+            {
+                sounds1.Stop();
+                sounds2.Stop();
+                sounds3.Stop();
+                sounds4.Stop();
+            }
             return aliens.Count() == 0;
         }
 
@@ -142,7 +149,7 @@ namespace SpaceInvaders.Managers
                 ufoTime = 0;
             }
             ufo.Move();
-            if (alienToMove == 0)
+            if (alienToMove == 0 && aliens.Count > 0)
             {
                 if (++counter > 4)
                     counter = 1;
