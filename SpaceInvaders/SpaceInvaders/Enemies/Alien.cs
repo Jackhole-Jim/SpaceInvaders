@@ -64,9 +64,10 @@ namespace SpaceInvaders.Enemies
         {
             soundPlayer1 = new MediaPlayer();
             soundPlayer1.Open(new Uri(Util.bingPathToAppDir("Resources\\ufo_highpitch.wav")));
+            soundPlayer1.Volume = 0.1;
             soundPlayer2 = new MediaPlayer();
             soundPlayer2.Open(new Uri(Util.bingPathToAppDir("Resources\\ufo_lowpitch.wav")));
-            soundPlayer2.Volume = 50;
+            soundPlayer2.Volume = 0.1;
         }
             
         
