@@ -151,40 +151,25 @@ namespace SpaceInvaders.Managers
             ufo.Move();
             if (alienToMove == 0 && aliens.Count > 0)
             {
-                if (++counter > 4)
-                    counter = 1;
-                switch(counter)
-                {
-                    case 1:
-                        sounds1.Stop();
-                        sounds1.Play();
-                        break;
-                    case 2:
-                        sounds2.Stop();
-                        sounds2.Play();
-                        break;
-                    case 3:
-                        sounds3.Stop();
-                        sounds3.Play();
-                        break;
-                    case 4:
-                        sounds4.Stop();
-                        sounds4.Play();
-                        break;
-                }
-                
-
+                AlienMoveSound();
                 moveDown = CheckIfWallHit();
             }
 
             if (alienToMove < aliens.Count)
             {
                 if (moveDown)
+                {
                     aliens[alienToMove++].MoveDown();
+                }
                 else
+                {
                     aliens[alienToMove++].Move();
+                }
                 if (alienToMove == aliens.Count)
+                {
                     alienToMove = 0;
+
+                }
             }
             if (alienToMove > aliens.Count)
                 alienToMove = 0;
@@ -192,6 +177,31 @@ namespace SpaceInvaders.Managers
             {
                 if (a.dead)
                     a.Move();
+            }
+        }
+
+        private void AlienMoveSound()
+        {
+            if (++counter > 4)
+                counter = 1;
+            switch (counter)
+            {
+                case 1:
+                    sounds1.Stop();
+                    sounds1.Play();
+                    break;
+                case 2:
+                    sounds2.Stop();
+                    sounds2.Play();
+                    break;
+                case 3:
+                    sounds3.Stop();
+                    sounds3.Play();
+                    break;
+                case 4:
+                    sounds4.Stop();
+                    sounds4.Play();
+                    break;
             }
         }
 
@@ -213,6 +223,18 @@ namespace SpaceInvaders.Managers
                 }
             }
             return wallHit;
+        }
+
+        public bool AlienHitBottom()
+        {
+            foreach (Alien alien in aliens)
+            {
+                if (alien.CheckBottomHit())
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

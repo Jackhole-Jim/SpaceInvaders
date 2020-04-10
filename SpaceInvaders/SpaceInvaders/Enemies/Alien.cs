@@ -13,6 +13,7 @@ namespace SpaceInvaders.Enemies
 {
     public class Alien : MovableObject
     {
+        private const int GAME_LOST_LINE = 700;
         private int xMoveDistance = 10;
         private int yMoveDistance = 20;
         public int deadTimer = 0;
@@ -45,6 +46,12 @@ namespace SpaceInvaders.Enemies
             bool inPanel = IsInPanel();
             X = MovingRight ? X - xMoveDistance : X + xMoveDistance;
             return !inPanel;
+        }
+
+        // When the Alien is below the bottom of the game area, the bottom is hit.
+        internal bool CheckBottomHit()
+        {
+            return (Y >= GAME_LOST_LINE); 
         }
     }
 }

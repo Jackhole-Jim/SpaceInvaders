@@ -112,6 +112,11 @@ namespace SpaceInvaders
             }
         }
 
+        public bool AlienHitBottom()
+        {
+            return enemyManager.AlienHitBottom();
+        }
+
         public Boolean Collision(MovableObject a, MovableObject b)
         {
             if ((a.X < b.X + b.Width() && a.X > b.X) || (a.X + a.Width() < b.X + b.Width() && a.X + a.Width() > b.X))

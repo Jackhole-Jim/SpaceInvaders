@@ -17,7 +17,7 @@ namespace SpaceInvaders
     public partial class Form1 : Form
     {
         private GameManager manager;
-        private bool gameStarted = false;
+        private bool gameRunning = false;
         private MediaPlayer sounds = new MediaPlayer();
        
 
@@ -36,9 +36,9 @@ namespace SpaceInvaders
 
         private void tick_Tick(object sender, EventArgs e)
         {
-            if (gameStarted)
+            if (gameRunning)
             {
-                if (!String.Equals(lblScore2.Text, "You Win!"))
+                if (!String.Equals(gameOverLbl.Text, "Y O U   W I N !"))
                 {
                     drawingPanel.Invalidate();
                     lblScore1.Text = manager.score.ToString();
@@ -46,26 +46,47 @@ namespace SpaceInvaders
                 
                 if (manager.Count())
                 {
-                    lblScore1.Text = "You Win!";
-                    sounds.Play();
+                    GameWon();
+                } 
+                else if (manager.AlienHitBottom())
+                {
+                    GameLost();
                 }
             }
         }
-        
+
+        private void GameWon()
+        {
+            gameRunning = false;
+            gameOverLbl.Text = "Y O U   W I N !";
+            gameOverLbl.ForeColor = System.Drawing.Color.Green;
+            gameOverLbl.Visible = true;
+            sounds.Play();
+        }
+
+        private void GameLost()
+        {
+            gameRunning = false;
+            gameOverLbl.Text = "G A M E   O V E R";
+            gameOverLbl.ForeColor = System.Drawing.Color.Red;
+            gameOverLbl.Visible = true;
+        }
+
         private void onPaint(object sender, PaintEventArgs e)
         {
-            if(gameStarted)
+            if(gameRunning)
             {
                 manager.Move(e);
             }
         }
+
 
         private void buttonPressed(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.P)
             {
                 HideGameStartScreen();
-                gameStarted = true;
+                gameRunning = true;
             }
             else
             {
@@ -88,6 +109,11 @@ namespace SpaceInvaders
             startpb2.Visible = false;
             startpb3.Visible = false;
             startpb4.Visible = false;
+        }
+
+        private void DisplayGameOver()
+        {
+            gameOverLbl.Visible = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -34,6 +34,7 @@ namespace SpaceInvaders
             this.tick = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.drawingPanel = new System.Windows.Forms.Panel();
+            this.gameOverLbl = new System.Windows.Forms.Label();
             this.startLbl9 = new System.Windows.Forms.Label();
             this.startpb4 = new System.Windows.Forms.PictureBox();
             this.startpb3 = new System.Windows.Forms.PictureBox();
@@ -77,6 +78,7 @@ namespace SpaceInvaders
             // 
             // drawingPanel
             // 
+            this.drawingPanel.Controls.Add(this.gameOverLbl);
             this.drawingPanel.Controls.Add(this.startLbl9);
             this.drawingPanel.Controls.Add(this.startpb4);
             this.drawingPanel.Controls.Add(this.startpb3);
@@ -103,6 +105,19 @@ namespace SpaceInvaders
             this.drawingPanel.TabIndex = 1;
             this.drawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.onPaint);
             this.drawingPanel.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.drawingPanel_PreviewKeyDown);
+            // 
+            // gameOverLbl
+            // 
+            this.gameOverLbl.AutoSize = true;
+            this.gameOverLbl.Font = new System.Drawing.Font("Agency FB", 32F, System.Drawing.FontStyle.Bold);
+            this.gameOverLbl.ForeColor = System.Drawing.Color.Red;
+            this.gameOverLbl.Location = new System.Drawing.Point(213, 126);
+            this.gameOverLbl.Name = "gameOverLbl";
+            this.gameOverLbl.Size = new System.Drawing.Size(256, 52);
+            this.gameOverLbl.TabIndex = 21;
+            this.gameOverLbl.Text = "G A M E   O V E R";
+            this.gameOverLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gameOverLbl.Visible = false;
             // 
             // startLbl9
             // 
@@ -377,6 +392,7 @@ namespace SpaceInvaders
         private System.Windows.Forms.PictureBox startpb2;
         private System.Windows.Forms.PictureBox startpb1;
         private System.Windows.Forms.Label startLbl9;
+        private System.Windows.Forms.Label gameOverLbl;
     }
 }
 
