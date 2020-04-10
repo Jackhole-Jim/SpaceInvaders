@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Media;
+using System.Windows.Media;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace SpaceInvaders
     public partial class Form1 : Form
     {
         private GameManager manager;
+        private MediaPlayer sounds = new MediaPlayer();
+       
 
         public Form1()
         {
@@ -27,6 +30,7 @@ namespace SpaceInvaders
             BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
             null, drawingPanel, new object[] { true });
             Invalidate();
+            sounds.Open(new Uri(Util.bingPathToAppDir("Resources\\spaceinvaders1.wav")));
         }
 
         private void tick_Tick(object sender, EventArgs e)
@@ -39,7 +43,6 @@ namespace SpaceInvaders
             }
             if (manager.Count())
             {
-                SoundPlayer sounds = new SoundPlayer(Resources.spaceinvaders1);
                 label1.Text = "You Win!";
                 sounds.Play();
             }

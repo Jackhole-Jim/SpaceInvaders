@@ -422,5 +422,23 @@ namespace SpaceInvaders.Properties {
                 return ResourceManager.GetStream("spaceinvaders1", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream ufo_highpitch {
+            get {
+                return ResourceManager.GetStream("ufo_highpitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream ufo_lowpitch {
+            get {
+                return ResourceManager.GetStream("ufo_lowpitch", resourceCulture);
+            }
+        }
     }
 }

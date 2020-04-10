@@ -1,10 +1,13 @@
-﻿using System;
+﻿using SpaceInvaders.Properties;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace SpaceInvaders.Enemies
 {
@@ -54,15 +57,37 @@ namespace SpaceInvaders.Enemies
         private int movingD = -1;
         private bool moving = false;
         private int deadTime = 0;
-        
+        private MediaPlayer soundPlayer1;
+        private MediaPlayer soundPlayer2;
 
-        public UFO(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight) { }
+        public UFO(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight) 
+        {
+            soundPlayer1 = new MediaPlayer();
+            soundPlayer1.Open(new Uri(Util.bingPathToAppDir("Resources\\ufo_highpitch.wav")));
+            soundPlayer2 = new MediaPlayer();
+            soundPlayer2.Open(new Uri(Util.bingPathToAppDir("Resources\\ufo_lowpitch.wav")));
+            soundPlayer2.Volume = 50;
+        }
+            
         
         public override void Move(int deltaX = 1, int deltaY = 5)
         {
          Animate();
          if (!dead && moving)
          {
+             switch(movingD)
+                {
+                    case -1:
+                        if(soundPlayer1.Position > TimeSpan.FromSeconds(0.1))
+                            soundPlayer1.Stop();
+                        soundPlayer1.Play();
+                        break;
+                    case 1:
+                        if (soundPlayer2.Position > TimeSpan.FromSeconds(2))
+                            soundPlayer2.Stop();
+                        soundPlayer2.Play();
+                        break; 
+                }
             X += MOVE_NUM * movingD;
             if (X <= -150 || X >= panelWidth + 150)
                moving = false;
@@ -75,6 +100,7 @@ namespace SpaceInvaders.Enemies
             X = -300;
          
       }
+                
 
         public void Smove()
         {

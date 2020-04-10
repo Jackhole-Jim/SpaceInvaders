@@ -8,6 +8,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace SpaceInvaders.Managers
 {
@@ -29,7 +30,10 @@ namespace SpaceInvaders.Managers
         private List<List<Bitmap>> alienSpriteList = new List<List<Bitmap>>();
         private List<Bitmap> alienDeadSprite = new List<Bitmap>();
         private List<Bitmap> ufoExplosion = new List<Bitmap>();
-        private SoundPlayer sounds;
+        private MediaPlayer sounds1;
+        private MediaPlayer sounds2;
+        private MediaPlayer sounds3;
+        private MediaPlayer sounds4;
         private int panelWidth;
         private int panelHeight;
         private bool moveDown = false;
@@ -39,6 +43,15 @@ namespace SpaceInvaders.Managers
         {
             this.panelWidth = panelWidth;
             this.panelHeight = panelHeight;
+
+            sounds1 = new MediaPlayer();
+            sounds1.Open(new Uri(Util.bingPathToAppDir("Resources\\fastinvader1.wav")));
+            sounds2 = new MediaPlayer();
+            sounds2.Open(new Uri(Util.bingPathToAppDir("Resources\\fastinvader2.wav")));
+            sounds3 = new MediaPlayer();
+            sounds3.Open(new Uri(Util.bingPathToAppDir("Resources\\fastinvader3.wav")));
+            sounds4 = new MediaPlayer();
+            sounds4.Open(new Uri(Util.bingPathToAppDir("Resources\\fastinvader4.wav")));
         }
 
         public Boolean EnemyCount()
@@ -136,20 +149,20 @@ namespace SpaceInvaders.Managers
                 switch(counter)
                 {
                     case 1:
-                        sounds = new SoundPlayer(Resources.fastinvader1);
-                        sounds.Play();
+                        sounds1.Stop();
+                        sounds1.Play();
                         break;
                     case 2:
-                        sounds = new SoundPlayer(Resources.fastinvader2);
-                        sounds.Play();
+                        sounds2.Stop();
+                        sounds2.Play();
                         break;
                     case 3:
-                        sounds = new SoundPlayer(Resources.fastinvader3);
-                        sounds.Play();
+                        sounds3.Stop();
+                        sounds3.Play();
                         break;
                     case 4:
-                        sounds = new SoundPlayer(Resources.fastinvader4);
-                        sounds.Play();
+                        sounds4.Stop();
+                        sounds4.Play();
                         break;
                 }
                 
