@@ -24,10 +24,11 @@ namespace SpaceInvaders.Managers
         private int counter = 0;
         public int alienToMove = 0;
         private List<Alien> aliens = new List<Alien>();
-        private TopEnemy ufo;
+        private UFO ufo;
         private List<Bitmap> alienBmps = new List<Bitmap>();
         private List<List<Bitmap>> alienSpriteList = new List<List<Bitmap>>();
         private List<Bitmap> alienDeadSprite = new List<Bitmap>();
+        private List<Bitmap> ufoExplosion = new List<Bitmap>();
         private SoundPlayer sounds;
         private int panelWidth;
         private int panelHeight;
@@ -63,7 +64,8 @@ namespace SpaceInvaders.Managers
             alienSpriteList[2].Add(new Bitmap(Resources.AlienA2));
             alienSpriteList[3].Add(new Bitmap(Resources.AlienUFO));
             alienDeadSprite.Add(new Bitmap(Resources.AlienPop));
-            ufo = new TopEnemy(-150, 150, alienSpriteList[3], alienDeadSprite, panelWidth, panelHeight);
+            ufoExplosion.Add(new Bitmap(Resources.AlienUFOExplosion));
+            ufo = new UFO(-150, 150, alienSpriteList[3], ufoExplosion, panelWidth, panelHeight);
             int alienImg = 0;
             for (int i = 0; i < NUM_OF_ROWS; i++)
             {
@@ -99,7 +101,7 @@ namespace SpaceInvaders.Managers
             return aliens;
         }
 
-        public TopEnemy getUFO()
+        public UFO getUFO()
         {
             return ufo;
         }
