@@ -14,14 +14,14 @@ namespace SpaceInvaders.Enemies
     public class Alien : MovableObject
     {
         private int xMoveDistance = 10;
-        private int yMoveDistance = 10;
+        private int yMoveDistance = 20;
         public int deadTimer = 0;
         public bool MovingRight { get; set; }
 
         public Alien(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight)
         { MovingRight = true; }
 
-        public override void Move(int deltaX = 10, int deltaY = 5)
+        public override void Move(int deltaX = 10, int deltaY = 20)
         {
             if (!dead)
             {
@@ -64,9 +64,10 @@ namespace SpaceInvaders.Enemies
         {
             soundPlayer1 = new MediaPlayer();
             soundPlayer1.Open(new Uri(Util.bingPathToAppDir("Resources\\ufo_highpitch.wav")));
+            soundPlayer1.Volume = 0.1;
             soundPlayer2 = new MediaPlayer();
             soundPlayer2.Open(new Uri(Util.bingPathToAppDir("Resources\\ufo_lowpitch.wav")));
-            soundPlayer2.Volume = 50;
+            soundPlayer2.Volume = 0.1;
         }
             
         
