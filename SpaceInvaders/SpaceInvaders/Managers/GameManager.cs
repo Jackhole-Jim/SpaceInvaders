@@ -52,7 +52,7 @@ namespace SpaceInvaders
             bullet.Move(0, 0);
             enemyManager.MoveNextAlien();
             ShowAll(e);
-            CheckCollision(enemyManager.GetAliens());
+            CheckCollision(enemyManager.GetAliens(), enemyManager.getUFO());
             if (bullet.timer == 5)
             {
                 bullet.reset();
@@ -80,7 +80,7 @@ namespace SpaceInvaders
             return enemyManager.EnemyCount();
         }
 
-        public void CheckCollision(List<Alien> aliens)
+        public void CheckCollision(List<Alien> aliens, UFO ufo)
         {
             if (!bullet.dead)
             {
@@ -96,6 +96,14 @@ namespace SpaceInvaders
                         alien.dead = true;
                         return;
                     }
+                }
+
+                if (Collision(bullet, ufo))
+                {
+                    ufo.die();
+                    bullet.dead = true;
+                    bullet.X -= 10;
+                    score += 3000;
                 }
             }
         }

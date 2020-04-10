@@ -15,7 +15,7 @@ namespace SpaceInvaders
       public List<Bitmap> Image { get; set; }
       public List<Bitmap> DeathAnimation { get; set; }
       public Boolean dead = false;
-      private int panelWidth, panelHeight;
+      protected int panelWidth, panelHeight;
       private int frame = 0;
 
       protected MovableObject(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation,  int panelX, int panelY)

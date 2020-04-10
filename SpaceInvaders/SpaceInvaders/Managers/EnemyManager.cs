@@ -18,18 +18,23 @@ namespace SpaceInvaders.Managers
         private const int ENEMIES_ROW_SPACING = 50;
         private const int ENEMIES_COL_SPACING = 50;
         private const int INITIAL_ALIEN_X = 20;
-        private const int INITIAL_ALIEN_Y = 300;
+        private const int INITIAL_ALIEN_Y = 450;
+        private const int UFO_TIMER = 500;
 
         private int counter = 0;
         public int alienToMove = 0;
         private List<Alien> aliens = new List<Alien>();
+        private UFO ufo;
         private List<Bitmap> alienBmps = new List<Bitmap>();
         private List<List<Bitmap>> alienSpriteList = new List<List<Bitmap>>();
         private List<Bitmap> alienDeadSprite = new List<Bitmap>();
+        private List<Bitmap> ufoExplosion = new List<Bitmap>();
         private SoundPlayer sounds;
         private int panelWidth;
         private int panelHeight;
         private bool moveDown = false;
+        private int ufoTime = 0;
+        
         public EnemyManager(int panelWidth, int panelHeight)
         {
             this.panelWidth = panelWidth;
@@ -50,14 +55,17 @@ namespace SpaceInvaders.Managers
             alienSpriteList.Add(new List<Bitmap>());
             alienSpriteList.Add(new List<Bitmap>());
             alienSpriteList.Add(new List<Bitmap>());
+            alienSpriteList.Add(new List<Bitmap>());
             alienSpriteList[0].Add(new Bitmap(Resources.AlienC1));
             alienSpriteList[0].Add(new Bitmap(Resources.AlienC2));
             alienSpriteList[1].Add(new Bitmap(Resources.AlienB1));
             alienSpriteList[1].Add(new Bitmap(Resources.AlienB2));
             alienSpriteList[2].Add(new Bitmap(Resources.AlienA1));
             alienSpriteList[2].Add(new Bitmap(Resources.AlienA2));
+            alienSpriteList[3].Add(new Bitmap(Resources.AlienUFO));
             alienDeadSprite.Add(new Bitmap(Resources.AlienPop));
-
+            ufoExplosion.Add(new Bitmap(Resources.AlienUFOExplosion));
+            ufo = new UFO(-150, 150, alienSpriteList[3], ufoExplosion, panelWidth, panelHeight);
             int alienImg = 0;
             for (int i = 0; i < NUM_OF_ROWS; i++)
             {
@@ -93,16 +101,34 @@ namespace SpaceInvaders.Managers
             return aliens;
         }
 
+        public UFO getUFO()
+        {
+            return ufo;
+        }
+
         public void ShowEnemies(PaintEventArgs e)
         {
             foreach (Alien alien in aliens)
             {
                 alien.Show(e);
             }
+            ufo.Show(e);
+        }
+
+        public void DoUfo()
+        {
+            ufo.Smove();
         }
 
         public void MoveNextAlien()
         {
+            ufoTime++;
+            if(ufoTime == UFO_TIMER)
+            {
+                DoUfo();
+                ufoTime = 0;
+            }
+            ufo.Move();
             if (alienToMove == 0)
             {
                 if (++counter > 4)
@@ -130,8 +156,7 @@ namespace SpaceInvaders.Managers
 
                 moveDown = CheckIfWallHit();
             }
-            if (alienToMove > aliens.Count)
-                alienToMove = 0;
+
             if (alienToMove < aliens.Count)
             {
                 if (moveDown)
@@ -141,7 +166,8 @@ namespace SpaceInvaders.Managers
                 if (alienToMove == aliens.Count)
                     alienToMove = 0;
             }
-            
+            if (alienToMove > aliens.Count)
+                alienToMove = 0;
             foreach(Alien a in aliens)
             {
                 if (a.dead)

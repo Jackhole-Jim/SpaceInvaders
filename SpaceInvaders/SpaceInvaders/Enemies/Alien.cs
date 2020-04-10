@@ -45,3 +45,46 @@ namespace SpaceInvaders.Enemies
         }
     }
 }
+
+namespace SpaceInvaders.Enemies
+{
+    public class UFO : MovableObject
+    {
+        private const int MOVE_NUM = 3;
+        private int movingD = -1;
+        private bool moving = false;
+        private int deadTime = 0;
+        
+
+        public UFO(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight) { }
+        
+        public override void Move(int deltaX = 1, int deltaY = 5)
+        {
+         Animate();
+         if (!dead && moving)
+         {
+            X += MOVE_NUM * movingD;
+            if (X <= -150 || X >= panelWidth + 150)
+               moving = false;
+         }
+         else if (dead && moving)
+            moving = false;
+         else if (dead && !moving && deadTime < 30)
+            deadTime++;
+         else if (dead && !moving && deadTime >= 30)
+            X = -300;
+         
+      }
+
+        public void Smove()
+        {
+            movingD *= -1;
+            moving = true;
+        }
+
+        public void die()
+        {
+            dead = true;
+        }
+    }
+}
