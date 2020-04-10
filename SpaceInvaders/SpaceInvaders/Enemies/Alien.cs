@@ -14,14 +14,14 @@ namespace SpaceInvaders.Enemies
     public class Alien : MovableObject
     {
         private int xMoveDistance = 10;
-        private int yMoveDistance = 10;
+        private int yMoveDistance = 20;
         public int deadTimer = 0;
         public bool MovingRight { get; set; }
 
         public Alien(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight)
         { MovingRight = true; }
 
-        public override void Move(int deltaX = 10, int deltaY = 5)
+        public override void Move(int deltaX = 10, int deltaY = 20)
         {
             if (!dead)
             {
