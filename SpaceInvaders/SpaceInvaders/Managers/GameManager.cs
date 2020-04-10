@@ -80,7 +80,7 @@ namespace SpaceInvaders
             return enemyManager.EnemyCount();
         }
 
-        public void CheckCollision(List<Alien> aliens, TopEnemy ufo)
+        public void CheckCollision(List<Alien> aliens, UFO ufo)
         {
             if (!bullet.dead)
             {
@@ -101,7 +101,6 @@ namespace SpaceInvaders
                 if (Collision(bullet, ufo))
                 {
                     ufo.die();
-                    ufo.X = -300;
                     bullet.dead = true;
                     bullet.X -= 10;
                     score += 3000;
