@@ -1,4 +1,6 @@
-﻿namespace SpaceInvaders
+﻿using SpaceInvaders.Properties;
+
+namespace SpaceInvaders
 {
     partial class Form1
     {
@@ -32,31 +34,31 @@
             this.tick = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.drawingPanel = new System.Windows.Forms.Panel();
+            this.startLbl9 = new System.Windows.Forms.Label();
+            this.startpb4 = new System.Windows.Forms.PictureBox();
+            this.startpb3 = new System.Windows.Forms.PictureBox();
+            this.startpb2 = new System.Windows.Forms.PictureBox();
+            this.startpb1 = new System.Windows.Forms.PictureBox();
+            this.startLbl8 = new System.Windows.Forms.Label();
+            this.startLbl7 = new System.Windows.Forms.Label();
+            this.startLbl6 = new System.Windows.Forms.Label();
+            this.startLbl5 = new System.Windows.Forms.Label();
+            this.startLbl4 = new System.Windows.Forms.Label();
+            this.startLbl3 = new System.Windows.Forms.Label();
+            this.startLbl2 = new System.Windows.Forms.Label();
+            this.startLbl1 = new System.Windows.Forms.Label();
             this.lblScore2 = new System.Windows.Forms.Label();
             this.lblHighScoreResult = new System.Windows.Forms.Label();
             this.lblPlayerTwoScore = new System.Windows.Forms.Label();
             this.lblHighScore = new System.Windows.Forms.Label();
             this.lblPlayerOnesScore = new System.Windows.Forms.Label();
             this.lblScore1 = new System.Windows.Forms.Label();
-            this.startLbl1 = new System.Windows.Forms.Label();
-            this.startLbl2 = new System.Windows.Forms.Label();
-            this.startLbl3 = new System.Windows.Forms.Label();
-            this.startLbl4 = new System.Windows.Forms.Label();
-            this.startLbl5 = new System.Windows.Forms.Label();
-            this.startLbl6 = new System.Windows.Forms.Label();
-            this.startLbl7 = new System.Windows.Forms.Label();
-            this.startLbl8 = new System.Windows.Forms.Label();
-            this.startpb1 = new System.Windows.Forms.PictureBox();
-            this.startpb2 = new System.Windows.Forms.PictureBox();
-            this.startpb3 = new System.Windows.Forms.PictureBox();
-            this.startpb4 = new System.Windows.Forms.PictureBox();
-            this.startLbl9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.drawingPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.startpb1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.startpb2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.startpb3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.startpb4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.startpb3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.startpb2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.startpb1)).BeginInit();
             this.SuspendLayout();
             // 
             // tick
@@ -101,6 +103,158 @@
             this.drawingPanel.TabIndex = 1;
             this.drawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.onPaint);
             this.drawingPanel.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.drawingPanel_PreviewKeyDown);
+            // 
+            // startLbl9
+            // 
+            this.startLbl9.AutoSize = true;
+            this.startLbl9.Font = new System.Drawing.Font("Agency FB", 24F);
+            this.startLbl9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.startLbl9.Location = new System.Drawing.Point(15, 713);
+            this.startLbl9.Name = "startLbl9";
+            this.startLbl9.Size = new System.Drawing.Size(264, 40);
+            this.startLbl9.TabIndex = 20;
+            this.startLbl9.Text = "P R E S S   P   T O   P L A Y";
+            this.startLbl9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // startpb4
+            // 
+            this.startpb4.BackColor = System.Drawing.Color.Transparent;
+            this.startpb4.Image = global::SpaceInvaders.Properties.Resources.AlienC1;
+            this.startpb4.InitialImage = global::SpaceInvaders.Properties.Resources.AlienC1;
+            this.startpb4.Location = new System.Drawing.Point(232, 545);
+            this.startpb4.Name = "startpb4";
+            this.startpb4.Size = new System.Drawing.Size(45, 35);
+            this.startpb4.TabIndex = 19;
+            this.startpb4.TabStop = false;
+            // 
+            // startpb3
+            // 
+            this.startpb3.BackColor = System.Drawing.Color.Transparent;
+            this.startpb3.Image = global::SpaceInvaders.Properties.Resources.AlienB2;
+            this.startpb3.InitialImage = global::SpaceInvaders.Properties.Resources.AlienB2;
+            this.startpb3.Location = new System.Drawing.Point(231, 493);
+            this.startpb3.Name = "startpb3";
+            this.startpb3.Size = new System.Drawing.Size(51, 34);
+            this.startpb3.TabIndex = 18;
+            this.startpb3.TabStop = false;
+            // 
+            // startpb2
+            // 
+            this.startpb2.BackColor = System.Drawing.Color.Transparent;
+            this.startpb2.Image = global::SpaceInvaders.Properties.Resources.AlienA1;
+            this.startpb2.InitialImage = global::SpaceInvaders.Properties.Resources.AlienA1;
+            this.startpb2.Location = new System.Drawing.Point(235, 438);
+            this.startpb2.Name = "startpb2";
+            this.startpb2.Size = new System.Drawing.Size(45, 28);
+            this.startpb2.TabIndex = 17;
+            this.startpb2.TabStop = false;
+            // 
+            // startpb1
+            // 
+            this.startpb1.BackColor = System.Drawing.Color.Transparent;
+            this.startpb1.Image = global::SpaceInvaders.Properties.Resources.AlienUFO;
+            this.startpb1.InitialImage = global::SpaceInvaders.Properties.Resources.AlienUFO;
+            this.startpb1.Location = new System.Drawing.Point(229, 387);
+            this.startpb1.Name = "startpb1";
+            this.startpb1.Size = new System.Drawing.Size(51, 30);
+            this.startpb1.TabIndex = 16;
+            this.startpb1.TabStop = false;
+            // 
+            // startLbl8
+            // 
+            this.startLbl8.AutoSize = true;
+            this.startLbl8.Font = new System.Drawing.Font("Agency FB", 24F);
+            this.startLbl8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.startLbl8.Location = new System.Drawing.Point(517, 713);
+            this.startLbl8.Name = "startLbl8";
+            this.startLbl8.Size = new System.Drawing.Size(159, 40);
+            this.startLbl8.TabIndex = 14;
+            this.startLbl8.Text = "C R E D I T   00";
+            this.startLbl8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // startLbl7
+            // 
+            this.startLbl7.AutoSize = true;
+            this.startLbl7.Font = new System.Drawing.Font("Agency FB", 24F);
+            this.startLbl7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.startLbl7.Location = new System.Drawing.Point(274, 534);
+            this.startLbl7.Name = "startLbl7";
+            this.startLbl7.Size = new System.Drawing.Size(179, 40);
+            this.startLbl7.TabIndex = 13;
+            this.startLbl7.Text = "= 1 0   P O I N T S";
+            this.startLbl7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // startLbl6
+            // 
+            this.startLbl6.AutoSize = true;
+            this.startLbl6.Font = new System.Drawing.Font("Agency FB", 24F);
+            this.startLbl6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.startLbl6.Location = new System.Drawing.Point(271, 484);
+            this.startLbl6.Name = "startLbl6";
+            this.startLbl6.Size = new System.Drawing.Size(186, 40);
+            this.startLbl6.TabIndex = 12;
+            this.startLbl6.Text = "= 2 0   P O I N T S";
+            this.startLbl6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // startLbl5
+            // 
+            this.startLbl5.AutoSize = true;
+            this.startLbl5.Font = new System.Drawing.Font("Agency FB", 24F);
+            this.startLbl5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.startLbl5.Location = new System.Drawing.Point(271, 429);
+            this.startLbl5.Name = "startLbl5";
+            this.startLbl5.Size = new System.Drawing.Size(186, 40);
+            this.startLbl5.TabIndex = 11;
+            this.startLbl5.Text = "= 3 0   P O I N T S";
+            this.startLbl5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // startLbl4
+            // 
+            this.startLbl4.AutoSize = true;
+            this.startLbl4.Font = new System.Drawing.Font("Agency FB", 24F);
+            this.startLbl4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.startLbl4.Location = new System.Drawing.Point(274, 377);
+            this.startLbl4.Name = "startLbl4";
+            this.startLbl4.Size = new System.Drawing.Size(180, 40);
+            this.startLbl4.TabIndex = 10;
+            this.startLbl4.Text = "=?  M Y S T E R Y";
+            this.startLbl4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // startLbl3
+            // 
+            this.startLbl3.AutoSize = true;
+            this.startLbl3.Font = new System.Drawing.Font("Agency FB", 24F);
+            this.startLbl3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.startLbl3.Location = new System.Drawing.Point(156, 322);
+            this.startLbl3.Name = "startLbl3";
+            this.startLbl3.Size = new System.Drawing.Size(377, 40);
+            this.startLbl3.TabIndex = 9;
+            this.startLbl3.Text = "* S C O R E   A D V A N C E   T A B L E *";
+            this.startLbl3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // startLbl2
+            // 
+            this.startLbl2.AutoSize = true;
+            this.startLbl2.Font = new System.Drawing.Font("Agency FB", 24F);
+            this.startLbl2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.startLbl2.Location = new System.Drawing.Point(215, 254);
+            this.startLbl2.Name = "startLbl2";
+            this.startLbl2.Size = new System.Drawing.Size(272, 40);
+            this.startLbl2.TabIndex = 8;
+            this.startLbl2.Text = "S P A C E      I N V A D E R S";
+            this.startLbl2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // startLbl1
+            // 
+            this.startLbl1.AutoSize = true;
+            this.startLbl1.Font = new System.Drawing.Font("Agency FB", 24F);
+            this.startLbl1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.startLbl1.Location = new System.Drawing.Point(297, 198);
+            this.startLbl1.Name = "startLbl1";
+            this.startLbl1.Size = new System.Drawing.Size(81, 40);
+            this.startLbl1.TabIndex = 7;
+            this.startLbl1.Text = "P L A Y";
+            this.startLbl1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblScore2
             // 
@@ -172,150 +326,6 @@
             this.lblScore1.Text = " 0000";
             this.lblScore1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // startLbl1
-            // 
-            this.startLbl1.AutoSize = true;
-            this.startLbl1.Font = new System.Drawing.Font("Agency FB", 24F);
-            this.startLbl1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLbl1.Location = new System.Drawing.Point(297, 198);
-            this.startLbl1.Name = "startLbl1";
-            this.startLbl1.Size = new System.Drawing.Size(81, 40);
-            this.startLbl1.TabIndex = 7;
-            this.startLbl1.Text = "P L A Y";
-            this.startLbl1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // startLbl2
-            // 
-            this.startLbl2.AutoSize = true;
-            this.startLbl2.Font = new System.Drawing.Font("Agency FB", 24F);
-            this.startLbl2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLbl2.Location = new System.Drawing.Point(217, 254);
-            this.startLbl2.Name = "startLbl2";
-            this.startLbl2.Size = new System.Drawing.Size(272, 40);
-            this.startLbl2.TabIndex = 8;
-            this.startLbl2.Text = "S P A C E      I N V A D E R S";
-            this.startLbl2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // startLbl3
-            // 
-            this.startLbl3.AutoSize = true;
-            this.startLbl3.Font = new System.Drawing.Font("Agency FB", 24F);
-            this.startLbl3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLbl3.Location = new System.Drawing.Point(159, 328);
-            this.startLbl3.Name = "startLbl3";
-            this.startLbl3.Size = new System.Drawing.Size(377, 40);
-            this.startLbl3.TabIndex = 9;
-            this.startLbl3.Text = "* S C O R E   A D V A N C E   T A B L E *";
-            this.startLbl3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // startLbl4
-            // 
-            this.startLbl4.AutoSize = true;
-            this.startLbl4.Font = new System.Drawing.Font("Agency FB", 24F);
-            this.startLbl4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLbl4.Location = new System.Drawing.Point(274, 392);
-            this.startLbl4.Name = "startLbl4";
-            this.startLbl4.Size = new System.Drawing.Size(180, 40);
-            this.startLbl4.TabIndex = 10;
-            this.startLbl4.Text = "=?  M Y S T E R Y";
-            this.startLbl4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // startLbl5
-            // 
-            this.startLbl5.AutoSize = true;
-            this.startLbl5.Font = new System.Drawing.Font("Agency FB", 24F);
-            this.startLbl5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLbl5.Location = new System.Drawing.Point(271, 444);
-            this.startLbl5.Name = "startLbl5";
-            this.startLbl5.Size = new System.Drawing.Size(186, 40);
-            this.startLbl5.TabIndex = 11;
-            this.startLbl5.Text = "= 3 0   P O I N T S";
-            this.startLbl5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // startLbl6
-            // 
-            this.startLbl6.AutoSize = true;
-            this.startLbl6.Font = new System.Drawing.Font("Agency FB", 24F);
-            this.startLbl6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLbl6.Location = new System.Drawing.Point(271, 499);
-            this.startLbl6.Name = "startLbl6";
-            this.startLbl6.Size = new System.Drawing.Size(186, 40);
-            this.startLbl6.TabIndex = 12;
-            this.startLbl6.Text = "= 2 0   P O I N T S";
-            this.startLbl6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // startLbl7
-            // 
-            this.startLbl7.AutoSize = true;
-            this.startLbl7.Font = new System.Drawing.Font("Agency FB", 24F);
-            this.startLbl7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.startLbl7.Location = new System.Drawing.Point(274, 549);
-            this.startLbl7.Name = "startLbl7";
-            this.startLbl7.Size = new System.Drawing.Size(179, 40);
-            this.startLbl7.TabIndex = 13;
-            this.startLbl7.Text = "= 1 0   P O I N T S";
-            this.startLbl7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // startLbl8
-            // 
-            this.startLbl8.AutoSize = true;
-            this.startLbl8.Font = new System.Drawing.Font("Agency FB", 24F);
-            this.startLbl8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLbl8.Location = new System.Drawing.Point(517, 713);
-            this.startLbl8.Name = "startLbl8";
-            this.startLbl8.Size = new System.Drawing.Size(159, 40);
-            this.startLbl8.TabIndex = 14;
-            this.startLbl8.Text = "C R E D I T   00";
-            this.startLbl8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // startpb1
-            // 
-            this.startpb1.InitialImage = global::SpaceInvaders.Properties.Resources.AlienUFO;
-            this.startpb1.Location = new System.Drawing.Point(228, 393);
-            this.startpb1.Name = "startpb1";
-            this.startpb1.Size = new System.Drawing.Size(45, 35);
-            this.startpb1.TabIndex = 16;
-            this.startpb1.TabStop = false;
-            // 
-            // startpb2
-            // 
-            this.startpb2.InitialImage = global::SpaceInvaders.Properties.Resources.AlienA1;
-            this.startpb2.Location = new System.Drawing.Point(228, 448);
-            this.startpb2.Name = "startpb2";
-            this.startpb2.Size = new System.Drawing.Size(45, 35);
-            this.startpb2.TabIndex = 17;
-            this.startpb2.TabStop = false;
-            // 
-            // startpb3
-            // 
-            this.startpb3.InitialImage = global::SpaceInvaders.Properties.Resources.AlienB2;
-            this.startpb3.Location = new System.Drawing.Point(228, 498);
-            this.startpb3.Name = "startpb3";
-            this.startpb3.Size = new System.Drawing.Size(45, 35);
-            this.startpb3.TabIndex = 18;
-            this.startpb3.TabStop = false;
-            // 
-            // startpb4
-            // 
-            this.startpb4.InitialImage = global::SpaceInvaders.Properties.Resources.AlienC1;
-            this.startpb4.Location = new System.Drawing.Point(228, 549);
-            this.startpb4.Name = "startpb4";
-            this.startpb4.Size = new System.Drawing.Size(45, 35);
-            this.startpb4.TabIndex = 19;
-            this.startpb4.TabStop = false;
-            // 
-            // startLbl9
-            // 
-            this.startLbl9.AutoSize = true;
-            this.startLbl9.Font = new System.Drawing.Font("Agency FB", 24F);
-            this.startLbl9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLbl9.Location = new System.Drawing.Point(15, 713);
-            this.startLbl9.Name = "startLbl9";
-            this.startLbl9.Size = new System.Drawing.Size(264, 40);
-            this.startLbl9.TabIndex = 20;
-            this.startLbl9.Text = "P R E S S   P   T O   P L A Y";
-            this.startLbl9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,7 +335,6 @@
             this.Controls.Add(this.drawingPanel);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -335,10 +344,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.drawingPanel.ResumeLayout(false);
             this.drawingPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.startpb1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.startpb2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.startpb3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.startpb4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.startpb3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.startpb2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.startpb1)).EndInit();
             this.ResumeLayout(false);
 
         }
