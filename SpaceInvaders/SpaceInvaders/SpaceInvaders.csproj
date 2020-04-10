@@ -127,7 +127,7 @@
     <None Include="Resources\AlienBShot4.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AlienC1.bmp" />
+    <None Include="Resources\AlienC1Green.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AlienC2.bmp" />
@@ -206,6 +206,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ufo_lowpitch.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AlienUFOWhite.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AlienC1.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

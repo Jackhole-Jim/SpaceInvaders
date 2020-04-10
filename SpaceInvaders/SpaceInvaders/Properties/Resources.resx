@@ -124,6 +124,12 @@
   <data name="AlienC2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AlienC2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AlienUFOWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AlienUFOWhite.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AlienAShot2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AlienAShot2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="AlienBShot3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AlienBShot3.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,9 +145,6 @@
   <data name="AlienC1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AlienC1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AlienAShot2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AlienAShot2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="AlienA2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AlienA2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -156,9 +159,6 @@
   </data>
   <data name="fastinvader3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fastinvader3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="AlienB1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AlienB1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AlienCShot3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AlienCShot3.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,11 +181,17 @@
   <data name="fastinvader2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fastinvader2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="AlienB2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AlienB2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="AlienBShot2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AlienBShot2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PlayerShot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PlayerShot.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ufo_highpitch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ufo_highpitch.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="PlayerExplosion2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PlayerExplosion2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,8 +202,8 @@
   <data name="AlienCShot4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AlienCShot4.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AlienB2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AlienB2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AlienB1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AlienB1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PlayerExplosion1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PlayerExplosion1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,10 +235,10 @@
   <data name="AlienBShot4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AlienBShot4.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ufo_highpitch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ufo_highpitch.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="ufo_lowpitch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ufo_lowpitch.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AlienC1Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AlienC1Green.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

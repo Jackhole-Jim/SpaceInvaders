@@ -31,7 +31,6 @@ namespace SpaceInvaders
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tick = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.drawingPanel = new System.Windows.Forms.Panel();
@@ -120,7 +119,7 @@ namespace SpaceInvaders
             // startpb4
             // 
             this.startpb4.BackColor = System.Drawing.Color.Transparent;
-            this.startpb4.Image = global::SpaceInvaders.Properties.Resources.AlienC1;
+            this.startpb4.Image = global::SpaceInvaders.Properties.Resources.AlienC1Green;
             this.startpb4.InitialImage = global::SpaceInvaders.Properties.Resources.AlienC1;
             this.startpb4.Location = new System.Drawing.Point(232, 545);
             this.startpb4.Name = "startpb4";
@@ -153,7 +152,7 @@ namespace SpaceInvaders
             // startpb1
             // 
             this.startpb1.BackColor = System.Drawing.Color.Transparent;
-            this.startpb1.Image = global::SpaceInvaders.Properties.Resources.AlienUFO;
+            this.startpb1.Image = global::SpaceInvaders.Properties.Resources.AlienUFOWhite;
             this.startpb1.InitialImage = global::SpaceInvaders.Properties.Resources.AlienUFO;
             this.startpb1.Location = new System.Drawing.Point(229, 387);
             this.startpb1.Name = "startpb1";
@@ -177,7 +176,7 @@ namespace SpaceInvaders
             // 
             this.startLbl7.AutoSize = true;
             this.startLbl7.Font = new System.Drawing.Font("Agency FB", 24F);
-            this.startLbl7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.startLbl7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(255)))), ((int)(((byte)(25)))));
             this.startLbl7.Location = new System.Drawing.Point(274, 534);
             this.startLbl7.Name = "startLbl7";
             this.startLbl7.Size = new System.Drawing.Size(179, 40);

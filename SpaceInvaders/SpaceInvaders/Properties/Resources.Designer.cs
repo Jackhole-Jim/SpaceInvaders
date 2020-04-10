@@ -193,6 +193,16 @@ namespace SpaceInvaders.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AlienC1Green {
+            get {
+                object obj = ResourceManager.GetObject("AlienC1Green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AlienC2 {
             get {
                 object obj = ResourceManager.GetObject("AlienC2", resourceCulture);
@@ -276,6 +286,16 @@ namespace SpaceInvaders.Properties {
         internal static System.Drawing.Bitmap AlienUFOExplosion {
             get {
                 object obj = ResourceManager.GetObject("AlienUFOExplosion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AlienUFOWhite {
+            get {
+                object obj = ResourceManager.GetObject("AlienUFOWhite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
