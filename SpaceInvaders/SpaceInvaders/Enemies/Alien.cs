@@ -1,17 +1,21 @@
-﻿using System;
+﻿using SpaceInvaders.Properties;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace SpaceInvaders.Enemies
 {
     public class Alien : MovableObject
     {
+        private const int GAME_LOST_LINE = 700;
         private int xMoveDistance = 10;
-        private int yMoveDistance = 10;
+        private int yMoveDistance = 20;
         public int deadTimer = 0;
         public bool MovingRight { get; set; }
         private int m_row;
@@ -24,7 +28,7 @@ namespace SpaceInvaders.Enemies
             m_column = column;
         }
 
-        public override void Move(int deltaX = 10, int deltaY = 5)
+        public override void Move(int deltaX = 10, int deltaY = 20)
         {
             if (!dead)
             {
@@ -62,27 +66,67 @@ namespace SpaceInvaders.Enemies
     }
 }
 
+        // When the Alien is below the bottom of the game area, the bottom is hit.
+        internal bool CheckBottomHit()
+        {
+            return (Y >= GAME_LOST_LINE); 
+        }
+    }
+}
+
 namespace SpaceInvaders.Enemies
 {
-    public class TopEnemy : MovableObject
+    public class UFO : MovableObject
     {
         private const int MOVE_NUM = 3;
         private int movingD = -1;
         private bool moving = false;
-        private bool alive = true;
-        
+        private int deadTime = 0;
+        private MediaPlayer soundPlayer1;
+        private MediaPlayer soundPlayer2;
 
-        public TopEnemy(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight) { }
+        public UFO(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight) 
+        {
+            soundPlayer1 = new MediaPlayer();
+            soundPlayer1.Open(new Uri(Util.bingPathToAppDir("Resources\\ufo_highpitch.wav")));
+            soundPlayer1.Volume = 0.1;
+            soundPlayer2 = new MediaPlayer();
+            soundPlayer2.Open(new Uri(Util.bingPathToAppDir("Resources\\ufo_lowpitch.wav")));
+            soundPlayer2.Volume = 0.1;
+        }
+            
         
         public override void Move(int deltaX = 1, int deltaY = 5)
         {
-            if(alive && moving)
-            {
-                X += MOVE_NUM * movingD;
-                if (X <= -150 || X >= panelWidth + 150)
-                    moving = false;
-            }
-        }
+         Animate();
+         if (!dead && moving)
+         {
+             switch(movingD)
+                {
+                    case -1:
+                        if(soundPlayer1.Position > TimeSpan.FromSeconds(0.1))
+                            soundPlayer1.Stop();
+                        soundPlayer1.Play();
+                        break;
+                    case 1:
+                        if (soundPlayer2.Position > TimeSpan.FromSeconds(2))
+                            soundPlayer2.Stop();
+                        soundPlayer2.Play();
+                        break; 
+                }
+            X += MOVE_NUM * movingD;
+            if (X <= -150 || X >= panelWidth + 150)
+               moving = false;
+         }
+         else if (dead && moving)
+            moving = false;
+         else if (dead && !moving && deadTime < 30)
+            deadTime++;
+         else if (dead && !moving && deadTime >= 30)
+            X = -300;
+         
+      }
+                
 
         public void Smove()
         {
@@ -92,7 +136,7 @@ namespace SpaceInvaders.Enemies
 
         public void die()
         {
-            alive = false;
+            dead = true;
         }
     }
 }

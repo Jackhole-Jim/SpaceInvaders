@@ -9,6 +9,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace SpaceInvaders.Managers
 {
@@ -28,11 +29,15 @@ namespace SpaceInvaders.Managers
         private int counter = 0;
         public int alienToMove = 0;
         private List<Alien> aliens = new List<Alien>();
-        private TopEnemy ufo;
+        private UFO ufo;
         private List<Bitmap> alienBmps = new List<Bitmap>();
         private List<List<Bitmap>> alienSpriteList = new List<List<Bitmap>>();
         private List<Bitmap> alienDeadSprite = new List<Bitmap>();
-        private SoundPlayer sounds;
+        private List<Bitmap> ufoExplosion = new List<Bitmap>();
+        private MediaPlayer sounds1;
+        private MediaPlayer sounds2;
+        private MediaPlayer sounds3;
+        private MediaPlayer sounds4;
         private int panelWidth;
         private int panelHeight;
         private bool moveDown = false;
@@ -52,10 +57,26 @@ namespace SpaceInvaders.Managers
         {
             this.panelWidth = panelWidth;
             this.panelHeight = panelHeight;
+
+            sounds1 = new MediaPlayer();
+            sounds1.Open(new Uri(Util.bingPathToAppDir("Resources\\fastinvader1.wav")));
+            sounds2 = new MediaPlayer();
+            sounds2.Open(new Uri(Util.bingPathToAppDir("Resources\\fastinvader2.wav")));
+            sounds3 = new MediaPlayer();
+            sounds3.Open(new Uri(Util.bingPathToAppDir("Resources\\fastinvader3.wav")));
+            sounds4 = new MediaPlayer();
+            sounds4.Open(new Uri(Util.bingPathToAppDir("Resources\\fastinvader4.wav")));
         }
 
         public Boolean EnemyCount()
         {
+            if (aliens.Count == 0)
+            {
+                sounds1.Stop();
+                sounds2.Stop();
+                sounds3.Stop();
+                sounds4.Stop();
+            }
             return aliens.Count() == 0;
         }
 
@@ -77,7 +98,8 @@ namespace SpaceInvaders.Managers
             alienSpriteList[2].Add(new Bitmap(Resources.AlienA2));
             alienSpriteList[3].Add(new Bitmap(Resources.AlienUFO));
             alienDeadSprite.Add(new Bitmap(Resources.AlienPop));
-            ufo = new TopEnemy(-150, 150, alienSpriteList[3], alienDeadSprite, panelWidth, panelHeight);
+            ufoExplosion.Add(new Bitmap(Resources.AlienUFOExplosion));
+            ufo = new UFO(-150, 150, alienSpriteList[3], ufoExplosion, panelWidth, panelHeight);
             int alienImg = 0;
             for (int i = 0; i < NUM_OF_ROWS; i++)
             {
@@ -132,7 +154,7 @@ namespace SpaceInvaders.Managers
             return aliens;
         }
 
-        public TopEnemy getUFO()
+        public UFO getUFO()
         {
             return ufo;
         }
@@ -162,42 +184,27 @@ namespace SpaceInvaders.Managers
                 ufoTime = 0;
             }
             ufo.Move();
-            if (alienToMove == 0)
+            if (alienToMove == 0 && aliens.Count > 0)
             {
-                if (++counter > 4)
-                    counter = 1;
-                switch (counter)
-                {
-                    case 1:
-                        sounds = new SoundPlayer(Resources.fastinvader1);
-                        sounds.Play();
-                        break;
-                    case 2:
-                        sounds = new SoundPlayer(Resources.fastinvader2);
-                        sounds.Play();
-                        break;
-                    case 3:
-                        sounds = new SoundPlayer(Resources.fastinvader3);
-                        sounds.Play();
-                        break;
-                    case 4:
-                        sounds = new SoundPlayer(Resources.fastinvader4);
-                        sounds.Play();
-                        break;
-                }
-
-
+                AlienMoveSound();
                 moveDown = CheckIfWallHit();
             }
 
             if (alienToMove < aliens.Count)
             {
                 if (moveDown)
+                {
                     aliens[alienToMove++].MoveDown();
+                }
                 else
+                {
                     aliens[alienToMove++].Move();
+                }
                 if (alienToMove == aliens.Count)
+                {
                     alienToMove = 0;
+
+                }
             }
             if (alienToMove > aliens.Count)
                 alienToMove = 0;
@@ -223,6 +230,31 @@ namespace SpaceInvaders.Managers
             }
         }
 
+        private void AlienMoveSound()
+        {
+            if (++counter > 4)
+                counter = 1;
+            switch (counter)
+            {
+                case 1:
+                    sounds1.Stop();
+                    sounds1.Play();
+                    break;
+                case 2:
+                    sounds2.Stop();
+                    sounds2.Play();
+                    break;
+                case 3:
+                    sounds3.Stop();
+                    sounds3.Play();
+                    break;
+                case 4:
+                    sounds4.Stop();
+                    sounds4.Play();
+                    break;
+            }
+        }
+
         public bool CheckIfWallHit()
         {
             bool wallHit = false;
@@ -241,6 +273,18 @@ namespace SpaceInvaders.Managers
                 }
             }
             return wallHit;
+        }
+
+        public bool AlienHitBottom()
+        {
+            foreach (Alien alien in aliens)
+            {
+                if (alien.CheckBottomHit())
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

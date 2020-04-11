@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Collections;
 using SpaceInvaders.Managers;
 using System.Media;
+using System.Windows.Media;
 
 namespace SpaceInvaders
 {
@@ -20,7 +21,7 @@ namespace SpaceInvaders
         private MovableObject mainShip;
         private PlayerBullet bullet;
         public int score = 0;
-        SoundPlayer player;
+        MediaPlayer player = new MediaPlayer();
         EnemyManager enemyManager;
         List<Bitmap> playerSprites = new List<Bitmap>();
         List<Bitmap> playerDSprites = new List<Bitmap>();
@@ -38,6 +39,7 @@ namespace SpaceInvaders
             bullet = new PlayerBullet(-100, -100, bulletSprites, bulletDSprites, panelWidth, panelHeight);
             enemyManager = new EnemyManager(panelWidth, panelHeight);
             enemyManager.GenerateEnemies();
+            player.Open(new Uri(Util.bingPathToAppDir("Resources\\invaderkilled.wav")));
         }
         
         public void ShowAll(PaintEventArgs e)
@@ -67,7 +69,7 @@ namespace SpaceInvaders
             return enemyManager.EnemyCount();
         }
 
-        public void CheckCollision(List<Alien> aliens, TopEnemy ufo)
+        public void CheckCollision(List<Alien> aliens, UFO ufo)
         {
             if (!bullet.dead)
             {
@@ -75,7 +77,7 @@ namespace SpaceInvaders
                 {
                     if (Collision(bullet, alien))
                     {
-                        player = new SoundPlayer(Resources.invaderkilled);
+                        player.Stop();
                         player.Play();
                         bullet.dead = true;
                         bullet.X -= 10;
@@ -87,8 +89,9 @@ namespace SpaceInvaders
 
                 if (Collision(bullet, ufo))
                 {
+                    player.Stop();
+                    player.Play();
                     ufo.die();
-                    ufo.X = -300;
                     bullet.dead = true;
                     bullet.X -= 10;
                     score += 3000;
@@ -102,6 +105,11 @@ namespace SpaceInvaders
                     //TODO: impliment the start of the life counter here
                 }
             });
+        }
+
+        public bool AlienHitBottom()
+        {
+            return enemyManager.AlienHitBottom();
         }
 
         public Boolean Collision(MovableObject a, MovableObject b)
@@ -133,6 +141,8 @@ namespace SpaceInvaders
                     break;
                 case Keys.Space:
                     bullet.Fire(mainShip.X, mainShip.Y);
+                    break;
+                default:
                     break;
             }
         }
