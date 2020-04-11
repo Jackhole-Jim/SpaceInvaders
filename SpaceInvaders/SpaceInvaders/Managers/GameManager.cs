@@ -98,13 +98,10 @@ namespace SpaceInvaders
                 }
             }
 
-            enemyManager.getBullets().ForEach(bullet =>
+            if(enemyManager.getBullets().RemoveAll(bullet => Collision(mainShip, bullet)) > 0)
             {
-                if (Collision(mainShip, bullet))
-                {
-                    PlayerHit();
-                }
-            });
+                PlayerHit();
+            }
         }
 
         private void PlayerHit()
