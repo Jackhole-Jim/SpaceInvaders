@@ -34,6 +34,10 @@ namespace SpaceInvaders
          this.tick = new System.Windows.Forms.Timer(this.components);
          this.pictureBox1 = new System.Windows.Forms.PictureBox();
          this.drawingPanel = new System.Windows.Forms.Panel();
+         this.playerLivesLbl = new System.Windows.Forms.Label();
+         this.linebreakLbl = new System.Windows.Forms.Label();
+         this.playerLifepb2 = new System.Windows.Forms.PictureBox();
+         this.playerLifepb1 = new System.Windows.Forms.PictureBox();
          this.gameOverLbl = new System.Windows.Forms.Label();
          this.startLbl9 = new System.Windows.Forms.Label();
          this.startpb4 = new System.Windows.Forms.PictureBox();
@@ -54,19 +58,15 @@ namespace SpaceInvaders
          this.lblHighScore = new System.Windows.Forms.Label();
          this.lblPlayerOnesScore = new System.Windows.Forms.Label();
          this.lblScore1 = new System.Windows.Forms.Label();
-         this.playerLifepb1 = new System.Windows.Forms.PictureBox();
-         this.playerLifepb2 = new System.Windows.Forms.PictureBox();
-         this.linebreakLbl = new System.Windows.Forms.Label();
-         this.playerLivesLbl = new System.Windows.Forms.Label();
          this.mainShipBindingSource = new System.Windows.Forms.BindingSource(this.components);
          ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
          this.drawingPanel.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.playerLifepb2)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.playerLifepb1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.startpb4)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.startpb3)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.startpb2)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.startpb1)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.playerLifepb1)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.playerLifepb2)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.mainShipBindingSource)).BeginInit();
          this.SuspendLayout();
          // 
@@ -118,12 +118,53 @@ namespace SpaceInvaders
          this.drawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.onPaint);
          this.drawingPanel.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.drawingPanel_PreviewKeyDown);
          // 
+         // playerLivesLbl
+         // 
+         this.playerLivesLbl.AutoSize = true;
+         this.playerLivesLbl.Font = new System.Drawing.Font("Agency FB", 24F);
+         this.playerLivesLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+         this.playerLivesLbl.Location = new System.Drawing.Point(3, 760);
+         this.playerLivesLbl.Name = "playerLivesLbl";
+         this.playerLivesLbl.Size = new System.Drawing.Size(30, 40);
+         this.playerLivesLbl.TabIndex = 26;
+         this.playerLivesLbl.Text = "3";
+         this.playerLivesLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+         // 
+         // linebreakLbl
+         // 
+         this.linebreakLbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(255)))), ((int)(((byte)(25)))));
+         this.linebreakLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+         this.linebreakLbl.Location = new System.Drawing.Point(-4, 747);
+         this.linebreakLbl.Name = "linebreakLbl";
+         this.linebreakLbl.Size = new System.Drawing.Size(701, 10);
+         this.linebreakLbl.TabIndex = 25;
+         // 
+         // playerLifepb2
+         // 
+         this.playerLifepb2.Image = global::SpaceInvaders.Properties.Resources.player;
+         this.playerLifepb2.Location = new System.Drawing.Point(84, 769);
+         this.playerLifepb2.Name = "playerLifepb2";
+         this.playerLifepb2.Size = new System.Drawing.Size(49, 28);
+         this.playerLifepb2.TabIndex = 23;
+         this.playerLifepb2.TabStop = false;
+         this.playerLifepb2.Visible = false;
+         // 
+         // playerLifepb1
+         // 
+         this.playerLifepb1.Image = global::SpaceInvaders.Properties.Resources.player;
+         this.playerLifepb1.Location = new System.Drawing.Point(29, 769);
+         this.playerLifepb1.Name = "playerLifepb1";
+         this.playerLifepb1.Size = new System.Drawing.Size(49, 28);
+         this.playerLifepb1.TabIndex = 22;
+         this.playerLifepb1.TabStop = false;
+         this.playerLifepb1.Visible = false;
+         // 
          // gameOverLbl
          // 
          this.gameOverLbl.AutoSize = true;
          this.gameOverLbl.Font = new System.Drawing.Font("Agency FB", 32F, System.Drawing.FontStyle.Bold);
          this.gameOverLbl.ForeColor = System.Drawing.Color.Red;
-         this.gameOverLbl.Location = new System.Drawing.Point(213, 126);
+         this.gameOverLbl.Location = new System.Drawing.Point(231, 128);
          this.gameOverLbl.Name = "gameOverLbl";
          this.gameOverLbl.Size = new System.Drawing.Size(256, 52);
          this.gameOverLbl.TabIndex = 21;
@@ -136,7 +177,7 @@ namespace SpaceInvaders
          this.startLbl9.AutoSize = true;
          this.startLbl9.Font = new System.Drawing.Font("Agency FB", 24F);
          this.startLbl9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-         this.startLbl9.Location = new System.Drawing.Point(208, 591);
+         this.startLbl9.Location = new System.Drawing.Point(208, 613);
          this.startLbl9.Name = "startLbl9";
          this.startLbl9.Size = new System.Drawing.Size(264, 40);
          this.startLbl9.TabIndex = 20;
@@ -353,47 +394,6 @@ namespace SpaceInvaders
          this.lblScore1.Text = " 0000";
          this.lblScore1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
          // 
-         // playerLifepb1
-         // 
-         this.playerLifepb1.Image = global::SpaceInvaders.Properties.Resources.player;
-         this.playerLifepb1.Location = new System.Drawing.Point(29, 769);
-         this.playerLifepb1.Name = "playerLifepb1";
-         this.playerLifepb1.Size = new System.Drawing.Size(49, 28);
-         this.playerLifepb1.TabIndex = 22;
-         this.playerLifepb1.TabStop = false;
-         this.playerLifepb1.Visible = false;
-         // 
-         // playerLifepb2
-         // 
-         this.playerLifepb2.Image = global::SpaceInvaders.Properties.Resources.player;
-         this.playerLifepb2.Location = new System.Drawing.Point(84, 769);
-         this.playerLifepb2.Name = "playerLifepb2";
-         this.playerLifepb2.Size = new System.Drawing.Size(49, 28);
-         this.playerLifepb2.TabIndex = 23;
-         this.playerLifepb2.TabStop = false;
-         this.playerLifepb2.Visible = false;
-         // 
-         // linebreakLbl
-         // 
-         this.linebreakLbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(255)))), ((int)(((byte)(25)))));
-         this.linebreakLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-         this.linebreakLbl.Location = new System.Drawing.Point(-4, 747);
-         this.linebreakLbl.Name = "linebreakLbl";
-         this.linebreakLbl.Size = new System.Drawing.Size(701, 10);
-         this.linebreakLbl.TabIndex = 25;
-         // 
-         // playerLivesLbl
-         // 
-         this.playerLivesLbl.AutoSize = true;
-         this.playerLivesLbl.Font = new System.Drawing.Font("Agency FB", 24F);
-         this.playerLivesLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-         this.playerLivesLbl.Location = new System.Drawing.Point(3, 760);
-         this.playerLivesLbl.Name = "playerLivesLbl";
-         this.playerLivesLbl.Size = new System.Drawing.Size(30, 40);
-         this.playerLivesLbl.TabIndex = 26;
-         this.playerLivesLbl.Text = "3";
-         this.playerLivesLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-         // 
          // mainShipBindingSource
          // 
          this.mainShipBindingSource.DataSource = typeof(SpaceInvaders.Player.MainShip);
@@ -416,12 +416,12 @@ namespace SpaceInvaders
          ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
          this.drawingPanel.ResumeLayout(false);
          this.drawingPanel.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.playerLifepb2)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.playerLifepb1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.startpb4)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.startpb3)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.startpb2)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.startpb1)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.playerLifepb1)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.playerLifepb2)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.mainShipBindingSource)).EndInit();
          this.ResumeLayout(false);
 
