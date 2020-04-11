@@ -18,7 +18,7 @@ namespace SpaceInvaders
     public class GameManager
     {
         private const int MAINSHIP_MOVE_DIST = 5;
-        private MovableObject mainShip;
+        private MainShip mainShip;
         private Bullet bullet;
         public int score = 0;
         MediaPlayer player = new MediaPlayer();
@@ -35,7 +35,7 @@ namespace SpaceInvaders
             playerDSprites.Add(new Bitmap(Resources.PlayerExplosion2));
             bulletSprites.Add(new Bitmap(Resources.PlayerShot));
             bulletDSprites.Add(new Bitmap(Resources.PlayerShotExplosion));
-            mainShip = new MainShip(350, 750, playerSprites, playerDSprites, panelWidth, panelHeight);
+            mainShip = new MainShip(300, 716, playerSprites, playerDSprites, panelWidth, panelHeight);
             bullet = new Bullet(-100, -100, bulletSprites, bulletDSprites, panelWidth, panelHeight);
             enemyManager = new EnemyManager(panelWidth, panelHeight);
             enemyManager.GenerateEnemies();
@@ -96,7 +96,7 @@ namespace SpaceInvaders
                         bullet.X -= 10;
                         score += 600;
                         alien.dead = true;
-                        return;
+                  return;
                     }
                 }
 
@@ -110,6 +110,21 @@ namespace SpaceInvaders
                     score += 3000;
                 }
             }
+        }
+
+      private void PlayerHit()
+      {
+         mainShip.Hit();
+      }
+
+      public int GetPlayerLives()
+      {
+         return mainShip.Lives;
+      }
+
+      public bool PlayerDead()
+        {
+            return mainShip.dead;
         }
 
         public bool AlienHitBottom()
