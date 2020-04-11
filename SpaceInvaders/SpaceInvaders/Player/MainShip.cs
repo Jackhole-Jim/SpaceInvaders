@@ -11,10 +11,12 @@ namespace SpaceInvaders.Player
 {
     public class MainShip : MovableObject
     {
+      public int Lives { get; private set; }
 
       public MainShip(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation,int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight)
       {
             Image = image;
+            Lives = 3;
       }
       public override void Move(int deltaX, int deltaY)
       {
@@ -35,6 +37,15 @@ namespace SpaceInvaders.Player
       public override string ToString()
       {
          return base.ToString();
+      }
+
+      public void Hit()
+      {
+         Lives--;
+         if (Lives <= 0)
+         {
+            dead = true;
+         }
       }
    }
 }

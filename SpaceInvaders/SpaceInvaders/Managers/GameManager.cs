@@ -18,8 +18,8 @@ namespace SpaceInvaders
     public class GameManager
     {
         private const int MAINSHIP_MOVE_DIST = 5;
-        private MovableObject mainShip;
-        private PlayerBullet bullet;
+        private MainShip mainShip;
+        private Bullet bullet;
         public int score = 0;
         MediaPlayer player = new MediaPlayer();
         EnemyManager enemyManager;
@@ -35,8 +35,8 @@ namespace SpaceInvaders
             playerDSprites.Add(new Bitmap(Resources.PlayerExplosion2));
             bulletSprites.Add(new Bitmap(Resources.PlayerShot));
             bulletDSprites.Add(new Bitmap(Resources.PlayerShotExplosion));
-            mainShip = new MainShip(350, 750, playerSprites, playerDSprites, panelWidth, panelHeight);
-            bullet = new PlayerBullet(-100, -100, bulletSprites, bulletDSprites, panelWidth, panelHeight);
+            mainShip = new MainShip(300, 716, playerSprites, playerDSprites, panelWidth, panelHeight);
+            bullet = new Bullet(-100, -100, bulletSprites, bulletDSprites, panelWidth, panelHeight);
             enemyManager = new EnemyManager(panelWidth, panelHeight);
             enemyManager.GenerateEnemies();
             player.Open(new Uri(Util.bingPathToAppDir("Resources\\invaderkilled.wav")));
@@ -83,7 +83,7 @@ namespace SpaceInvaders
                         bullet.X -= 10;
                         score += 600;
                         alien.dead = true;
-                        return;
+                  return;
                     }
                 }
 
@@ -96,6 +96,23 @@ namespace SpaceInvaders
                     bullet.X -= 10;
                     score += 3000;
                 }
+            }
+        }
+
+      private void PlayerHit()
+      {
+         mainShip.Hit();
+      }
+
+      public int GetPlayerLives()
+      {
+         return mainShip.Lives;
+      }
+
+      public bool PlayerDead()
+        {
+            return mainShip.dead;
+        }
             }
 
             enemyManager.getBullets().ForEach(bullet =>

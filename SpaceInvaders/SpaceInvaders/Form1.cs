@@ -20,6 +20,7 @@ namespace SpaceInvaders
         private bool gameRunning = false;
         private MediaPlayer sounds = new MediaPlayer();
         private MediaPlayer startSound = new MediaPlayer();
+        private int playersLivesLeft = 3;
 
         public Form1()
         {
@@ -49,15 +50,37 @@ namespace SpaceInvaders
                 if (manager.Count())
                 {
                     GameWon();
-                } 
-                else if (manager.AlienHitBottom())
-                {
-                    GameLost();
                 }
-            }
+               else if (manager.GetPlayerLives() < playersLivesLeft)
+               {
+                  DeductPlayerLife();
+               }
+               else if (manager.AlienHitBottom() || manager.PlayerDead())
+                   {
+                      GameLost();
+                   }
+               }
         }
 
-        private void GameWon()
+      private void DeductPlayerLife()
+      {
+         playersLivesLeft--;
+         playerLivesLbl.Text = playersLivesLeft.ToString();
+         if (playersLivesLeft == 2)
+         {
+            playerLifepb2.Visible = false;
+         }
+         else if (playersLivesLeft == 1)
+         {
+            playerLifepb1.Visible = false;
+         }
+         else if (playersLivesLeft == 0)
+         {
+            GameLost();
+         }
+      }
+
+      private void GameWon()
         {
             gameRunning = false;
             gameOverLbl.Text = "Y O U   W I N !";
@@ -66,7 +89,7 @@ namespace SpaceInvaders
             sounds.Play();
         }
 
-        private void GameLost()
+        public void GameLost()
         {
             gameRunning = false;
             gameOverLbl.Text = "G A M E   O V E R";
@@ -88,7 +111,7 @@ namespace SpaceInvaders
             if(e.KeyCode == Keys.P)
             {
                 startSound.Stop();
-                HideGameStartScreen();
+                DisplayGameStartScreen();
                 gameRunning = true;
             }
             else
@@ -97,7 +120,12 @@ namespace SpaceInvaders
             }
         }
 
-        private void HideGameStartScreen()
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            DisplayGameIntroScreen();
+        }
+
+        private void DisplayGameStartScreen()
         {
             startLbl1.Visible = false;
             startLbl2.Visible = false;
@@ -112,21 +140,14 @@ namespace SpaceInvaders
             startpb2.Visible = false;
             startpb3.Visible = false;
             startpb4.Visible = false;
-        }
-
-        private void DisplayGameOver()
-        {
-            gameOverLbl.Visible = true;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            GameStartAnimation();
+            playerLifepb1.Visible = true;
+            playerLifepb2.Visible = true;
+            linebreakLbl.Visible = true;
+            playerLivesLbl.Visible = true;
         }
 
 
-
-        private void GameStartAnimation()
+        private void DisplayGameIntroScreen()
         {
             startLbl1.Visible = true;
             startLbl2.Visible = true;
@@ -141,9 +162,13 @@ namespace SpaceInvaders
             startpb2.Visible = true;
             startpb3.Visible = true;
             startpb4.Visible = true;
+            playerLifepb1.Visible = false;
+            playerLifepb2.Visible = false;
+            linebreakLbl.Visible = false;
+            playerLivesLbl.Visible = false;
         }
 
-        private void lblHighScoreResult_Click(object sender, EventArgs e)
+      private void lblHighScoreResult_Click(object sender, EventArgs e)
         {
 
         }
