@@ -10,14 +10,12 @@ using System.Windows.Forms;
 
 namespace SpaceInvaders.Player
 {
-    public class Bullet: MovableObject
+    public class PlayerBullet : MovableObject
     {
         public int timer = 0;
         SoundPlayer sound = new SoundPlayer(Resources.shoot);
-        public Bullet(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight)
-        {
-            Image = image;
-        }
+        public PlayerBullet(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight)
+        {}
 
         public override void Move(int deltaX, int deltaY)
         {

@@ -14,9 +14,15 @@ namespace SpaceInvaders.Enemies
         private int yMoveDistance = 10;
         public int deadTimer = 0;
         public bool MovingRight { get; set; }
+        private int m_row;
+        private int m_column;
 
-        public Alien(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight)
-        { MovingRight = true; }
+        public Alien(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight, int row, int column) : base(x, y, image, deathanimation, panelWidth, panelHeight)
+        { 
+            MovingRight = true;
+            m_row = row;
+            m_column = column;
+        }
 
         public override void Move(int deltaX = 10, int deltaY = 5)
         {
@@ -42,6 +48,16 @@ namespace SpaceInvaders.Enemies
             bool inPanel = IsInPanel();
             X = MovingRight ? X - xMoveDistance : X + xMoveDistance;
             return !inPanel;
+        }
+
+        public int getRow()
+        {
+            return m_row;
+        }
+
+        public int getColumn()
+        {
+            return m_column;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SpaceInvaders.Enemies;
+using SpaceInvaders.Player;
 using SpaceInvaders.Properties;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,9 @@ namespace SpaceInvaders.Managers
         private const int INITIAL_ALIEN_X = 20;
         private const int INITIAL_ALIEN_Y = 450;
         private const int UFO_TIMER = 500;
+        private const double SHOOT_PROBABILITY = 0.1;
+        private const int MAX_BULLETS = 2;
+        private const int BULLET_MOVE = 5;
 
         private int counter = 0;
         public int alienToMove = 0;
@@ -33,7 +37,17 @@ namespace SpaceInvaders.Managers
         private int panelHeight;
         private bool moveDown = false;
         private int ufoTime = 0;
-        
+
+        private List<EnemyBullet> bullets = new List<EnemyBullet>();
+        private List<Bitmap> bulletSprites = new List<Bitmap>
+        {
+            Resources.PlayerShot
+        };
+        private List<Bitmap> bulletDeathSprites = new List<Bitmap>
+        {
+            Resources.PlayerShotExplosion
+        };
+
         public EnemyManager(int panelWidth, int panelHeight)
         {
             this.panelWidth = panelWidth;
@@ -68,15 +82,15 @@ namespace SpaceInvaders.Managers
             for (int i = 0; i < NUM_OF_ROWS; i++)
             {
 
-                    for (int j = 0; j < ENEMIES_PER_ROW; j++)
-                    {
-                        Alien newAlien = new Alien(x, y, alienSpriteList[alienImg], alienDeadSprite, panelWidth, panelHeight);
-                        aliens.Add(newAlien);
+                for (int j = 0; j < ENEMIES_PER_ROW; j++)
+                {
+                    Alien newAlien = new Alien(x, y, alienSpriteList[alienImg], alienDeadSprite, panelWidth, panelHeight, i, j);
+                    aliens.Add(newAlien);
 
-                        x += ENEMIES_COL_SPACING;
-                    }
-                    y -= ENEMIES_ROW_SPACING;
-                    x = INITIAL_ALIEN_X;
+                    x += ENEMIES_COL_SPACING;
+                }
+                y -= ENEMIES_ROW_SPACING;
+                x = INITIAL_ALIEN_X;
                 if (rowCount == 1)
                 {
                     rowCount = 0;
@@ -86,12 +100,31 @@ namespace SpaceInvaders.Managers
                     rowCount++;
             }
         }
+        public void RemoveDead()
+        {
+            foreach (Alien alien in aliens)
+            {
+                if (alien.dead && alien.deadTimer > 5)
+                {
+                    Reduce(alien);
+                    aliens.Remove(alien);
+                    return;
+                }
+            }
+
+            bullets.RemoveAll(bullet => !bullet.IsInPanel());
+        }
 
         internal void Reduce(Alien a)
         {
             int place = aliens.IndexOf(a);
             if (alienToMove > place)
                 alienToMove--;
+        }
+
+        public List<EnemyBullet> getBullets()
+        {
+            return bullets;
         }
 
         public List<Alien> GetAliens()
@@ -111,6 +144,8 @@ namespace SpaceInvaders.Managers
                 alien.Show(e);
             }
             ufo.Show(e);
+
+            bullets.ForEach(bullet => bullet.Show(e));
         }
 
         public void DoUfo()
@@ -121,7 +156,7 @@ namespace SpaceInvaders.Managers
         public void MoveNextAlien()
         {
             ufoTime++;
-            if(ufoTime == UFO_TIMER)
+            if (ufoTime == UFO_TIMER)
             {
                 DoUfo();
                 ufoTime = 0;
@@ -131,7 +166,7 @@ namespace SpaceInvaders.Managers
             {
                 if (++counter > 4)
                     counter = 1;
-                switch(counter)
+                switch (counter)
                 {
                     case 1:
                         sounds = new SoundPlayer(Resources.fastinvader1);
@@ -150,7 +185,7 @@ namespace SpaceInvaders.Managers
                         sounds.Play();
                         break;
                 }
-                
+
 
                 moveDown = CheckIfWallHit();
             }
@@ -166,10 +201,25 @@ namespace SpaceInvaders.Managers
             }
             if (alienToMove > aliens.Count)
                 alienToMove = 0;
-            foreach(Alien a in aliens)
+            foreach (Alien a in aliens)
             {
                 if (a.dead)
                     a.Move();
+            }
+
+            CalculateShootProbability(aliens[alienToMove]);
+            bullets.ForEach(bullet => bullet.Move(0, BULLET_MOVE));
+        }
+
+        private void CalculateShootProbability(Alien alien)
+        {
+            double rand = new Random().NextDouble();
+
+            if(rand <= SHOOT_PROBABILITY && bullets.Count < MAX_BULLETS)
+            {
+                Alien bottomAlien = aliens.Where(whereAlien => whereAlien.getColumn() == alien.getColumn()).OrderByDescending(orderAlien => orderAlien.getRow()).LastOrDefault();
+
+                bullets.Add(new EnemyBullet(bottomAlien.X + (bottomAlien.Width() / 2), bottomAlien.Y + bottomAlien.Height(), bulletSprites, bulletDeathSprites, panelWidth, panelHeight));
             }
         }
 

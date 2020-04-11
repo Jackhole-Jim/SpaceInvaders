@@ -18,7 +18,7 @@ namespace SpaceInvaders
     {
         private const int MAINSHIP_MOVE_DIST = 5;
         private MovableObject mainShip;
-        private Bullet bullet;
+        private PlayerBullet bullet;
         public int score = 0;
         SoundPlayer player;
         EnemyManager enemyManager;
@@ -35,7 +35,7 @@ namespace SpaceInvaders
             bulletSprites.Add(new Bitmap(Resources.PlayerShot));
             bulletDSprites.Add(new Bitmap(Resources.PlayerShotExplosion));
             mainShip = new MainShip(350, 750, playerSprites, playerDSprites, panelWidth, panelHeight);
-            bullet = new Bullet(-100, -100, bulletSprites, bulletDSprites, panelWidth, panelHeight);
+            bullet = new PlayerBullet(-100, -100, bulletSprites, bulletDSprites, panelWidth, panelHeight);
             enemyManager = new EnemyManager(panelWidth, panelHeight);
             enemyManager.GenerateEnemies();
         }
@@ -59,20 +59,7 @@ namespace SpaceInvaders
                 bullet.timer = 0;
                 bullet.dead = false;
             }
-            RemoveDead(enemyManager.GetAliens());
-        }
-
-        private void RemoveDead(List<Alien> aliens)
-        {
-            foreach (Alien alien in aliens)
-            {
-                if (alien.dead && alien.deadTimer > 5)
-                {
-                    enemyManager.Reduce(alien);
-                    aliens.Remove(alien);
-                    return;
-                }
-            }
+            enemyManager.RemoveDead();
         }
 
         public Boolean Count()
@@ -107,17 +94,30 @@ namespace SpaceInvaders
                     score += 3000;
                 }
             }
+
+            enemyManager.getBullets().ForEach(bullet =>
+            {
+                if (Collision(mainShip, bullet))
+                {
+                    //TODO: impliment the start of the life counter here
+                }
+            });
         }
 
         public Boolean Collision(MovableObject a, MovableObject b)
         {
-            if ((a.X < b.X + b.Width() && a.X > b.X) || (a.X + a.Width() < b.X + b.Width() && a.X + a.Width() > b.X))
-                if ((a.Y < b.Y + b.Height() && a.Y > b.Y) || (a.Y + a.Height() < b.Y + b.Height() && a.Y + a.Height() > b.Y))
+            if (IsWithin(a.X, b.X, a.X + a.Width()) || IsWithin(b.X, a.X, b.X + b.Width()))
+                if (IsWithin(a.Y, b.Y, a.Y + a.Height()) || IsWithin(b.Y, a.Y, b.Y + b.Height()))
                     return true;
                 else
                     return false;
             else
                 return false;
+        }
+
+        public static bool IsWithin(int minimum, int value, int maximum)
+        {
+            return value >= minimum && value <= maximum;
         }
 
         public void handlebuttonPressed(Keys key)
