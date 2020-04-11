@@ -63,13 +63,11 @@ namespace SpaceInvaders.Enemies
         {
             return m_column;
         }
-    }
-}
 
         // When the Alien is below the bottom of the game area, the bottom is hit.
         internal bool CheckBottomHit()
         {
-            return (Y >= GAME_LOST_LINE); 
+            return (Y >= GAME_LOST_LINE);
         }
     }
 }

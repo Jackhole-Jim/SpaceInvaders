@@ -19,7 +19,7 @@ namespace SpaceInvaders
     {
         private const int MAINSHIP_MOVE_DIST = 5;
         private MainShip mainShip;
-        private Bullet bullet;
+        private PlayerBullet bullet;
         public int score = 0;
         MediaPlayer player = new MediaPlayer();
         EnemyManager enemyManager;
@@ -36,19 +36,19 @@ namespace SpaceInvaders
             bulletSprites.Add(new Bitmap(Resources.PlayerShot));
             bulletDSprites.Add(new Bitmap(Resources.PlayerShotExplosion));
             mainShip = new MainShip(300, 716, playerSprites, playerDSprites, panelWidth, panelHeight);
-            bullet = new Bullet(-100, -100, bulletSprites, bulletDSprites, panelWidth, panelHeight);
+            bullet = new PlayerBullet(-100, -100, bulletSprites, bulletDSprites, panelWidth, panelHeight);
             enemyManager = new EnemyManager(panelWidth, panelHeight);
             enemyManager.GenerateEnemies();
             player.Open(new Uri(Util.bingPathToAppDir("Resources\\invaderkilled.wav")));
         }
-        
+
         public void ShowAll(PaintEventArgs e)
         {
             mainShip.Show(e);
             bullet.Show(e);
             enemyManager.ShowEnemies(e);
         }
-        
+
         public void Move(PaintEventArgs e)
         {
             bullet.Move(0, 0);
@@ -83,7 +83,7 @@ namespace SpaceInvaders
                         bullet.X -= 10;
                         score += 600;
                         alien.dead = true;
-                  return;
+                        return;
                     }
                 }
 
@@ -97,31 +97,29 @@ namespace SpaceInvaders
                     score += 3000;
                 }
             }
-        }
-
-      private void PlayerHit()
-      {
-         mainShip.Hit();
-      }
-
-      public int GetPlayerLives()
-      {
-         return mainShip.Lives;
-      }
-
-      public bool PlayerDead()
-        {
-            return mainShip.dead;
-        }
-            }
 
             enemyManager.getBullets().ForEach(bullet =>
             {
                 if (Collision(mainShip, bullet))
                 {
-                    //TODO: impliment the start of the life counter here
+                    PlayerHit();
                 }
             });
+        }
+
+        private void PlayerHit()
+        {
+            mainShip.Hit();
+        }
+
+        public int GetPlayerLives()
+        {
+            return mainShip.Lives;
+        }
+
+        public bool PlayerDead()
+        {
+            return mainShip.dead;
         }
 
         public bool AlienHitBottom()
@@ -147,7 +145,7 @@ namespace SpaceInvaders
 
         public void handlebuttonPressed(Keys key)
         {
-            switch(key)
+            switch (key)
             {
                 case Keys.Right:
                     mainShip.Move(MAINSHIP_MOVE_DIST, 0);

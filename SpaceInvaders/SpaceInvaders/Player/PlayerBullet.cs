@@ -17,7 +17,7 @@ namespace SpaceInvaders.Player
     {
         public int timer = 0;
         MediaPlayer sound = new MediaPlayer();
-        public Bullet(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight)
+        public PlayerBullet(int x, int y, List<Bitmap> image, List<Bitmap> deathanimation, int panelWidth, int panelHeight) : base(x, y, image, deathanimation, panelWidth, panelHeight)
         {            
             sound.Open(new Uri(Util.bingPathToAppDir("Resources\\shoot.wav")));
             Image = image;
