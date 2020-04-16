@@ -1,4 +1,4 @@
-﻿using SpaceInvaders.Enemies;
+using SpaceInvaders.Enemies;
 using SpaceInvaders.Player;
 using SpaceInvaders.Properties;
 using System;
@@ -213,8 +213,13 @@ namespace SpaceInvaders.Managers
                 if (a.dead)
                     a.Move();
             }
-
-            CalculateShootProbability(aliens[alienToMove]);
+            try
+            {
+                CalculateShootProbability(aliens[alienToMove]); // bug caught, alien tries to shoot while being shot causes game to crash
+            }
+            catch (Exception e)
+            { }
+            
             bullets.ForEach(bullet => bullet.Move(0, BULLET_MOVE));
         }
 

@@ -5,12 +5,12 @@ Currently Space Invaders has the ability to:
 	*The game calculates a score for every alien you hit, based on this score it determines when you win the game (after destroying all the aliens)
 	*The aliens character changes correspondingly to when it moves every turn.
 	*The alien and bullet display an animation when colliding with each other.
-	
-Features not implemented yet:
 	*Alien ships shooting back
 	*Game losing screen when the aliens get too low or run out of lives
 	*Lives for the main ship
 	*Game sounds
 	*Game starting screen
+
+Features not implemented yet:
 	*Rock barrier for cover
 	*High score tracking
